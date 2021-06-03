@@ -1,4 +1,4 @@
-package java.com.greencity.econews;
+package com.greencity.econews;
 
 public class EmptyTest {
 }
