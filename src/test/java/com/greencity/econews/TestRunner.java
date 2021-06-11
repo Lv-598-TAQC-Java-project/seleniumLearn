@@ -27,9 +27,9 @@ public class TestRunner {
 
     protected WelcomePage loadApplication() {
         // return new HomePage(driver);
-         WebDriver driver = getDriver();
+        WebDriver driver = getDriver();
         driver.get(BASE_URL);
-        return new WelcomePage(getDriver());
+        return new WelcomePage(driver);
 
     }
 }

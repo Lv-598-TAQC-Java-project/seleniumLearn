@@ -23,4 +23,10 @@ public class Link extends BaseWebElement{
     public String getLinkPath(){
         return webElement.getAttribute("href");
     }
+    public void sendKeys(String keys){
+        this.webElement.sendKeys(keys);
+    }
+    public String getText(){
+        return this.webElement.getText();
+    }
 }
