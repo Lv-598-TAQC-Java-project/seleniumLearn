@@ -2,16 +2,19 @@ package com.greencity.pages;
 
 import org.openqa.selenium.WebDriver;
 
-public class BaseCommon extends BasePage{
+public class BaseCommon extends BasePage {
 
     private Header header;
 
     public BaseCommon(WebDriver webDriver) {
         super(webDriver);
-        this.header=new Header(this.webDriver);
+        //   this.header=new Header(this.webDriver);
     }
 
-    public Header getHeader(){
+    public Header getHeader() {
+        if (header == null) {
+            header = new Header(this.webDriver);
+        }
         return header;
     }
 

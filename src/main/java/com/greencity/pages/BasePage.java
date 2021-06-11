@@ -20,4 +20,5 @@ public abstract class BasePage {
     public void refresh(){
         webDriver.navigate().refresh();
     }
+
 }
