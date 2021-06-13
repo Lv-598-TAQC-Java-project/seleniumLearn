@@ -8,8 +8,7 @@ public class SmokeTest extends TestRunner {
     public void smokeTest() {
         WelcomePage page = loadApplication();
         page.getHeader()
-                .goToEcoNewsPage()
-                .clickOnCreateNewsBtn();
+                .goToEcoNewsPage();
     }
 
 

@@ -13,14 +13,15 @@ public class EcoNewsPage extends BaseCommon {
 
     public EcoNewsPage(WebDriver webDriver) {
         super(webDriver);
+        initElements();
     }
 
-    public void initElements() {
-        createNewsBtn = new Link(NewsPageLocator.CREATE_NEWS_BUTTON, this.webDriver);
+    private void initElements() {
+        //createNewsBtn = new Link(NewsPageLocator.CREATE_NEWS_BUTTON, this.webDriver);
     }
 
-    public CreateNewsPage clickOnCreateNewsBtn() {
-        createNewsBtn.click();
-        return new CreateNewsPage();
-    }
+//    public CreateNewsPage clickOnCreateNewsBtn() {
+//        createNewsBtn.click();
+//        return new CreateNewsPage();
+//    }
 }

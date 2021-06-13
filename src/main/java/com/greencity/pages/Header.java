@@ -1,5 +1,6 @@
 package com.greencity.pages;
 
+import com.greencity.elements.ButtonElement;
 import com.greencity.elements.Link;
 import com.greencity.locators.HeaderLocators;
 import com.greencity.pages.EcoNewsPage;
@@ -11,6 +12,7 @@ public class Header {
     ///region webElements
     private Link logo;
     private Link ecoNewsLink;//or WebElement
+    private ButtonElement searchButton;
     ///endregion
     protected WebDriver webDriver;
 
@@ -26,10 +28,13 @@ public class Header {
     }
 
 
+
+
     ///endregion
 
     protected void initElements() {
         logo = new Link(HeaderLocators.LOGO,this.webDriver);
         ecoNewsLink = new Link(HeaderLocators.ECO_NEWS,this.webDriver);
+        searchButton = new ButtonElement(HeaderLocators.SEARCH, webDriver);
     }
 }
