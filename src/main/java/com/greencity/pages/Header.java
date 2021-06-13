@@ -3,21 +3,26 @@ package com.greencity.pages;
 import com.greencity.elements.ButtonElement;
 import com.greencity.elements.Link;
 import com.greencity.locators.HeaderLocators;
-import com.greencity.pages.EcoNewsPage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+
 
 public class Header {
     ///region webElements
     private Link logo;
     private Link ecoNewsLink;//or WebElement
     private ButtonElement searchButton;
+    private Link signUpBtn;
+    private Link signInBtn;
     ///endregion
     protected WebDriver webDriver;
 
     public Header(WebDriver webDriver) {
         this.webDriver = webDriver;
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         initElements();
     }
 
@@ -27,8 +32,10 @@ public class Header {
         return new EcoNewsPage(webDriver);
     }
 
-
-
+    public SignInPage goToSignInPage(){
+        signInBtn.click();
+        return new SignInPage(webDriver);
+    }
 
     ///endregion
 
