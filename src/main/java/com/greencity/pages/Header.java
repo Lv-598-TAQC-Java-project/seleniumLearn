@@ -43,5 +43,7 @@ public class Header {
         logo = new Link(HeaderLocators.LOGO,this.webDriver);
         ecoNewsLink = new Link(HeaderLocators.ECO_NEWS,this.webDriver);
         searchButton = new ButtonElement(HeaderLocators.SEARCH, webDriver);
+        signUpBtn = new Link(HeaderLocators.SIGN_UP,this.webDriver);
+        signInBtn = new Link(HeaderLocators.SIGN_IN,this.webDriver);
     }
 }

@@ -2,9 +2,7 @@ package com.greencity.pages;
 
 import com.greencity.elements.Link;
 import com.greencity.locators.NewsPageLocator;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class EcoNewsPage extends BaseCommon {
     ///region WebElements
