@@ -13,12 +13,12 @@ public abstract class BasePage {
     public String getUrl(){
         return webDriver.getCurrentUrl();
     }
+
     public BasePage goToUrl(String url){
         webDriver.get(url);
        return this;
     }
-    public void refresh(){
-        webDriver.navigate().refresh();
-    }
+
+    public void refresh(){ webDriver.navigate().refresh(); }
 
 }

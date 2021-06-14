@@ -12,6 +12,6 @@ public class WelcomePage extends BaseCommon {
     }
 
 
-    public void initElements() {
+    private void initElements() {
     }
 }

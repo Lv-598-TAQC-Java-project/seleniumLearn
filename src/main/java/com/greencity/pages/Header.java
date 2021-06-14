@@ -7,14 +7,14 @@ import org.openqa.selenium.WebDriver;
 
 
 public class Header {
+    ///endregion
+    protected WebDriver webDriver;
     ///region webElements
     private Link logo;
     private Link ecoNewsLink;//or WebElement
     private ButtonElement searchButton;
     private Link signUpBtn;
     private Link signInBtn;
-    ///endregion
-    protected WebDriver webDriver;
 
     public Header(WebDriver webDriver) {
         this.webDriver = webDriver;
@@ -32,18 +32,23 @@ public class Header {
         return new EcoNewsPage(webDriver);
     }
 
-    public SignInPage goToSignInPage(){
+    public SignInPage goToSignInPage() {
         signInBtn.click();
         return new SignInPage(webDriver);
+    }
+
+    public SearchPopup goToSearchPopup() {
+        searchButton.clickOnButton();
+        return new SearchPopup(webDriver);
     }
 
     ///endregion
 
     protected void initElements() {
-        logo = new Link(HeaderLocators.LOGO,this.webDriver);
-        ecoNewsLink = new Link(HeaderLocators.ECO_NEWS,this.webDriver);
+        logo = new Link(HeaderLocators.LOGO, this.webDriver);
+        ecoNewsLink = new Link(HeaderLocators.ECO_NEWS, this.webDriver);
         searchButton = new ButtonElement(HeaderLocators.SEARCH, webDriver);
-        signUpBtn = new Link(HeaderLocators.SIGN_UP,this.webDriver);
-        signInBtn = new Link(HeaderLocators.SIGN_IN,this.webDriver);
+        signUpBtn = new Link(HeaderLocators.SIGN_UP, this.webDriver);
+        signInBtn = new Link(HeaderLocators.SIGN_IN, this.webDriver);
     }
 }
