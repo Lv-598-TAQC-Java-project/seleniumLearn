@@ -9,11 +9,9 @@ public class WelcomePage extends BaseCommon {
     public WelcomePage(WebDriver driver) {
         super(driver);
         initElements();
-
     }
 
 
-    public void initElements() {
-
+    private void initElements() {
     }
 }

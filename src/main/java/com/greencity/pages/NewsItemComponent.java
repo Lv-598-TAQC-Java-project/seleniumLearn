@@ -1,19 +1,15 @@
 package com.greencity.pages;
 
-import com.greencity.elements.Link;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
-public class NewsItemComponent extends BaseCommon{
+public class NewsItemComponent {
+    private final WebDriver driver;
+    private final WebElement newsItem;
 
-    private Link ecoNewsImg;
-    private Link ecoNewsTag;
-    private Link ecoNewsTitle;
-    private Link ecoNewsDescription;
-    private Link ecoNewsCreationDate;
-    private Link ecoNewsAuthor;
+    public NewsItemComponent(WebDriver driver, WebElement newsItem) {
+        this.driver = driver;
+        this.newsItem = newsItem;
 
-
-    public NewsItemComponent(WebDriver webDriver) {
-        super(webDriver);
     }
 }

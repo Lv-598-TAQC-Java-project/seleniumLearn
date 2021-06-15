@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.lang.ref.WeakReference;
 
 public class TestRunner {
-    private final String BASE_URL = "https://ita-social-projects.github.io/GreenCityClient/#/";
+    private final String BASE_URL = "https://ita-social-projects.github.io/GreenCityClient/#/news";
    // private Map<Long, WebDriver> drivers;
 
     protected WebDriver getDriver() {
@@ -32,4 +32,8 @@ public class TestRunner {
         return new WelcomePage(driver);
 
     }
+//          Створює новий драйвер і його закриває
+//    protected void quit(){
+//        this.getDriver().quit();
+//    }
 }
