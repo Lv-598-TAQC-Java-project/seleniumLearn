@@ -13,7 +13,7 @@ public class SortTypeTest extends TestRunner {
 
     @Test
     public void sortByNewestTest() throws InterruptedException {
-        SearchPopup searchPopup = loadApplication()
+        SearchPopup searchPopup = new WelcomePage(webDriver)
                 .getHeader()
                 .goToSearchPopup();
         searchPopup.searchComponents("Title");
@@ -23,14 +23,14 @@ public class SortTypeTest extends TestRunner {
 
     @Test
     public void testingTest() {
-        EcoNewsPage ecoNewsPage = loadApplication().getHeader().goToEcoNewsPage();
+        EcoNewsPage ecoNewsPage = new WelcomePage(webDriver).getHeader().goToEcoNewsPage();
         ecoNewsPage.scroll();
     }
 
     @Test
     public void testingSecondTest() {
         String actualResult = "Test";
-        SearchPopup searchPopup = loadApplication()
+        SearchPopup searchPopup = new WelcomePage(webDriver)
                 .getHeader()
                 .goToSearchPopup();
         searchPopup.searchComponents("Test");

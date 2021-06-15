@@ -7,7 +7,7 @@ public class SuccessfulLoginTest extends TestRunner {
 
     @Test
     public void successfulLoginTest() throws InterruptedException {
-        WelcomePage welcomePage = loadApplication();
+        WelcomePage welcomePage = new WelcomePage(webDriver);
         String s =welcomePage.getHeader()
                 .goToSignInPage()
                 .signIn().getProfileNameText();

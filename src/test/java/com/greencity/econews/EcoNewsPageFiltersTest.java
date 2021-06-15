@@ -11,8 +11,8 @@ import java.awt.*;
 public class EcoNewsPageFiltersTest extends TestRunner{
 
     @Test
-    public void filtersTest() throws AWTException {
-        WelcomePage welcomePage = loadApplication();
+    public void filtersTest()  {
+        WelcomePage welcomePage = new WelcomePage(webDriver);
        welcomePage
                 .getHeader()
                 .goToEcoNewsPage();

@@ -5,35 +5,30 @@ import com.greencity.pages.WelcomePage;
 import com.greencity.utils.WaitWrapper;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 
 import java.lang.ref.WeakReference;
 
 public class TestRunner {
-    private final String BASE_URL = "https://ita-social-projects.github.io/GreenCityClient/#/news";
+    private final String BASE_URL = "https://ita-social-projects.github.io/GreenCityClient/#";
    // private Map<Long, WebDriver> drivers;
+    protected static WebDriver webDriver;
+    @AfterClass
+    public void tearDownClass(){
+        webDriver.close();
+        webDriver.quit();
+    }
 
-    protected WebDriver getDriver() {
+    @BeforeClass
+    protected void getDriver() {
         String webDriverPath = System.getenv("webdriver.chrome.driver");
         System.setProperty("webdriver.chrome.driver", webDriverPath);
-        WebDriver currentWebDriver = new ChromeDriver();
-        WaitWrapper.setDefaultImplicitlyWait(currentWebDriver);
-//        if (currentWebDriver == null) {
-//            currentWebDriver = new ChromeDriver();
-//            WaitWrapper.setDefaultImplicitlyWait(currentWebDriver);
-//            drivers.put(Thread.currentThread().getId(), currentWebDriver);
-//        }
-        return currentWebDriver;
+        webDriver = new ChromeDriver();
+        WaitWrapper.setDefaultImplicitlyWait(webDriver);
+        webDriver.manage().window().maximize();
+        webDriver.get(BASE_URL);
     }
 
-    protected WelcomePage loadApplication() {
-        // return new HomePage(driver);
-        WebDriver driver = getDriver();
-        driver.get(BASE_URL);
-        return new WelcomePage(driver);
 
-    }
-//          Створює новий драйвер і його закриває
-//    protected void quit(){
-//        this.getDriver().quit();
-//    }
 }

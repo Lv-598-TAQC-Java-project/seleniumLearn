@@ -83,10 +83,6 @@ public class EcoNewsPage extends BaseCommon {
        ScrollWrapper.scrollPageToDown(NewsPageLocator.LOAD_CIRCLE.getPath(), webDriver);
     }
 
-    @Override
-    public Header getHeader() {
-        return super.getHeader();
-    }
 
     public NewsItemsContainer goToNewsItemContainer(){
         return new NewsItemsContainer(webDriver);
