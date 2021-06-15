@@ -3,21 +3,29 @@ package com.greencity.econews;
 import com.greencity.locators.SortByPopupComponentLocators;
 import com.greencity.pages.EcoNewsPage;
 import com.greencity.pages.SearchPopup;
-import com.greencity.pages.SearchQueryPage;
+import com.greencity.pages.SearchQueryPage.SearchQueryPage;
 import com.greencity.pages.WelcomePage;
-import com.greencity.utils.ScrollWrapper;
+import com.greencity.utils.RandomTextWrapper;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class SortTypeTest extends TestRunner {
+public class SearchingElementsTest extends TestRunner {
+
+    WelcomePage welcomePage;
+    @BeforeMethod
+    public void loadInitialPage()
+    {
+      welcomePage = loadApplication();
+    }
 
     @Test
     public void sortByNewestTest() throws InterruptedException {
-        SearchPopup searchPopup = loadApplication()
+        SearchPopup searchPopup = welcomePage
                 .getHeader()
                 .goToSearchPopup();
         searchPopup.searchComponents("Title");
-        SearchQueryPage searchResult  = searchPopup.clickOnAllSearchResultsButton();
+        SearchQueryPage searchResult = searchPopup.clickOnAllSearchResultsButton();
         searchResult.sortNews(SortByPopupComponentLocators.SORT_NEWEST);
     }
 
@@ -30,7 +38,7 @@ public class SortTypeTest extends TestRunner {
     @Test
     public void testingSecondTest() {
         String actualResult = "Test";
-        SearchPopup searchPopup = loadApplication()
+        SearchPopup searchPopup = welcomePage
                 .getHeader()
                 .goToSearchPopup();
         searchPopup.searchComponents("Test");
@@ -41,4 +49,16 @@ public class SortTypeTest extends TestRunner {
         Assert.assertTrue(actualResult.contains(resultText));
     }
 
+    @Test
+    public void searchForAbsentNewsTest() {
+        String searchQuery = RandomTextWrapper.getRandomAlphabeticText(5);
+        String expectedText = "We couldn't find results for '" + searchQuery + "' Please change the search.";
+        SearchPopup searchPopup = welcomePage
+                .getHeader()
+                .goToSearchPopup();
+        searchPopup.searchComponents(searchQuery);
+        searchPopup.initElementsForNegativeSearch();
+        String searchNotFoundText = searchPopup.getSearchNotFoundText().trim();
+        Assert.assertEquals(searchNotFoundText,expectedText, "Text is not the same!");
+    }
 }

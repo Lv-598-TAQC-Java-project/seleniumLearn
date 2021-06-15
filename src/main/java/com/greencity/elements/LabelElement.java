@@ -4,7 +4,9 @@ import com.greencity.locators.BaseLocator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class LabelElement extends BaseWebElement{
+
+public class LabelElement extends BaseWebElement {
+
     public LabelElement(BaseLocator locator, WebDriver driver) {
         super(locator, driver);
     }
@@ -16,7 +18,9 @@ public class LabelElement extends BaseWebElement{
     public LabelElement(WebElement webElement) {
         super(webElement);
     }
-    public String getText(){return this.webElement.getText();}
 
-
+    public String getText() {
+        return this.webElement.getText();
+    }
 }
+

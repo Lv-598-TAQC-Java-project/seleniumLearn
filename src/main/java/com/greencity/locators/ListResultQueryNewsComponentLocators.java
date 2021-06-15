@@ -1,14 +1,13 @@
-package com.greencity.test;
+package com.greencity.locators;
 
-import com.greencity.locators.BaseLocator;
 import org.openqa.selenium.By;
 
-public enum ListNewsComponentLocators implements BaseLocator {
+public enum ListResultQueryNewsComponentLocators implements BaseLocator {
     LIST_NEWS(By.xpath("//app-search-all-results//div[@class = 'search_action-wrp']/following-sibling::div/app-search-item"));
 
     private By path;
 
-    ListNewsComponentLocators(By path) {
+    ListResultQueryNewsComponentLocators(By path) {
         this.path = path;
     }
 

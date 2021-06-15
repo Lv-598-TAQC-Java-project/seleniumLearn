@@ -1,23 +1,23 @@
-package com.greencity.test;
+package com.greencity.pages.SearchQueryPage;
 
-import com.greencity.elements.BaseWebElement;
 import com.greencity.elements.Link;
+import com.greencity.locators.CurrentResultQueryNewsLocators;
 import com.greencity.pages.BaseCommon;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class CurrentNewsComponent extends BaseCommon {
+public class CurrentResultQueryNewsComponent extends BaseCommon {
     private Link titleNews;
     private WebElement rootWebElement;
 
-    CurrentNewsComponent(WebDriver webDriver, WebElement rootWebElement) {
+    CurrentResultQueryNewsComponent(WebDriver webDriver, WebElement rootWebElement) {
         super(webDriver);
         this.rootWebElement = rootWebElement;
         initElements();
     }
 
     private void initElements() {
-        titleNews = new Link(CurrentNewsLocators.NEWS_TITLE, rootWebElement); //????
+        titleNews = new Link(CurrentResultQueryNewsLocators.NEWS_TITLE, rootWebElement); //????
     }
 
     public String getTitleText() {
