@@ -8,11 +8,10 @@ public class SuccessfulLoginTest extends TestRunner {
     @Test
     public void successfulLoginTest() throws InterruptedException {
         WelcomePage welcomePage = loadApplication();
-        welcomePage.getHeader()
+        String s =welcomePage.getHeader()
                 .goToSignInPage()
-                .signIn()
-               .getHeader()
-                .goToEcoNewsPage();
-    }
+                .signIn().getProfileNameText();
+        System.out.println(s);
+        }
 
 }

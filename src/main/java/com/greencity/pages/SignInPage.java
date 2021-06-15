@@ -10,10 +10,15 @@ public class SignInPage extends BasePopUp{
     private Link email;
     private Link password;
     private Link sighInBtn;
-
+    private Link closeBtn;
 
     public SignInPage(WebDriver webDriver) {
         super(webDriver);
+//        try {
+//            Thread.sleep(4000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         initElements();
     }
 
@@ -26,7 +31,7 @@ public class SignInPage extends BasePopUp{
     public MySpacePage signIn() throws InterruptedException {
         email.sendKeys("viyim18256@vvaa1.com");
         password.sendKeys("Qwe!qwe1");
-       // sleep();
+        Thread.sleep(1000);
         clickOnSignInBtn();
         return new MySpacePage(webDriver);
     }
@@ -34,6 +39,11 @@ public class SignInPage extends BasePopUp{
         sighInBtn.click();
     }
     public void sleep() throws InterruptedException {
-        Thread.sleep(3000);
+        Thread.sleep(2000);
+    }
+    public Header clickOnCloseBtn(){
+        closeBtn = new Link(SignInLocators.CLOSE_BTN,this.webDriver);
+        closeBtn.click();
+        return getHeader();
     }
 }
