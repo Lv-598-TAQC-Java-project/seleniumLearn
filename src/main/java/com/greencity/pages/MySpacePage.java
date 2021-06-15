@@ -27,7 +27,7 @@ public class MySpacePage extends BaseCommon {
     }
 
     public String getProfileNameText() throws InterruptedException {
-        Thread.sleep(2000);
+        Thread.sleep(5000);
         profileName = new Label(MySpaceLocators.PROFILE_NAME, this.webDriver);
        return profileName.getText();
     }

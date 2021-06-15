@@ -16,7 +16,7 @@ public class SearchingElementsTest extends TestRunner {
     @BeforeMethod
     public void loadInitialPage()
     {
-      welcomePage = loadApplication();
+      welcomePage = new WelcomePage(webDriver);
     }
 
     @Test
@@ -31,7 +31,7 @@ public class SearchingElementsTest extends TestRunner {
 
     @Test
     public void testingTest() {
-        EcoNewsPage ecoNewsPage = loadApplication().getHeader().goToEcoNewsPage();
+        EcoNewsPage ecoNewsPage = new WelcomePage(webDriver).getHeader().goToEcoNewsPage();
         ecoNewsPage.scroll();
     }
 

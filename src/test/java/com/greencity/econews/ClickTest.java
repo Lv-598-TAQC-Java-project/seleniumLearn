@@ -7,8 +7,8 @@ import org.testng.annotations.Test;
 
 @Test
 public class ClickTest extends TestRunner{
-    WelcomePage welcomePage = new WelcomePage(getDriver());
-    Header header = welcomePage.getHeader();
-    EcoNewsPage ecoNewsPage = header.goToEcoNewsPage();
+   // WelcomePage welcomePage = new WelcomePage();
+//    Header header = welcomePage.getHeader();
+//    EcoNewsPage ecoNewsPage = header.goToEcoNewsPage();
 
 }
