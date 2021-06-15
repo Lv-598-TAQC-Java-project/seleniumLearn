@@ -20,9 +20,7 @@ public class Link extends BaseWebElement{
     public void click(){
         this.webElement.click();
     }
-    public String getLinkPath(){
-        return webElement.getAttribute("href");
-    }
+    public String getLinkPath(){ return webElement.getAttribute("href"); }
     public void sendKeys(String keys){
         this.webElement.sendKeys(keys);
     }

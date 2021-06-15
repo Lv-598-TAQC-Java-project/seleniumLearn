@@ -6,13 +6,12 @@ import org.testng.annotations.Test;
 public class SuccessfulLoginTest extends TestRunner {
 
     @Test
-    public void successfulLoginTest() throws InterruptedException {
+    public void successfulLoginTest() {
         WelcomePage welcomePage = loadApplication();
-        welcomePage.getHeader()
+        String s =welcomePage.getHeader()
                 .goToSignInPage()
                 .signIn()
                 .getHeader()
                 .goToEcoNewsPage();
     }
-
 }
