@@ -1,5 +1,7 @@
 package com.greencity.pages;
 
+import com.greencity.locators.NewsPageLocator;
+import com.greencity.utils.ScrollWrapper;
 import org.openqa.selenium.WebDriver;
 
 public abstract class BasePage {

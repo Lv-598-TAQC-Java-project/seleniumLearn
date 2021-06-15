@@ -14,7 +14,7 @@ public class BaseWebElement {
     public BaseWebElement(BaseLocator locator, WebDriver driver) {
         this.path = locator.getPath();
         this.driver = driver;
-        webElement = driver.findElement(path);
+        this.webElement = driver.findElement(path);
     }
 
     public BaseWebElement(BaseLocator locator, WebElement webElement) {

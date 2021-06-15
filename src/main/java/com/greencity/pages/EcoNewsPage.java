@@ -82,4 +82,8 @@ public class EcoNewsPage extends BaseCommon {
     public Header getHeader() {
         return super.getHeader();
     }
+
+    public NewsItemsContainer goToNewsItemContainer(){
+        return new NewsItemsContainer(webDriver);
+    }
 }
