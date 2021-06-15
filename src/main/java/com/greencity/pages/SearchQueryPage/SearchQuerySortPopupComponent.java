@@ -1,8 +1,9 @@
-package com.greencity.pages;
+package com.greencity.pages.SearchQueryPage;
 
 import com.greencity.elements.ButtonElement;
 import com.greencity.elements.Link;
 import com.greencity.locators.SortByPopupComponentLocators;
+import com.greencity.pages.BasePopUp;
 import org.openqa.selenium.WebDriver;
 
 public class SearchQuerySortPopupComponent extends BasePopUp {
