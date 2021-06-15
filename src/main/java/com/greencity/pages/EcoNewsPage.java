@@ -1,5 +1,6 @@
 package com.greencity.pages;
 
+import com.greencity.elements.Label;
 import com.greencity.elements.Link;
 import com.greencity.locators.NewsPageLocator;
 import com.greencity.utils.ScrollWrapper;
@@ -15,6 +16,7 @@ public class EcoNewsPage extends BaseCommon {
     private Link filterEducationBtn;
     private Link tableviewBtn;
     private Link listViewBtn;
+    private Label itemsLbl;
     ///endregion
 
     public EcoNewsPage(WebDriver webDriver) {
@@ -73,7 +75,10 @@ public class EcoNewsPage extends BaseCommon {
         listViewBtn.click();
         return new EcoNewsPage(webDriver);
     }
-
+    public String getItemsLblText(){
+        itemsLbl = new Label(NewsPageLocator.ITEMS_LBL,this.webDriver);
+        return itemsLbl.getText();
+    }
     public void scroll() {
        ScrollWrapper.scrollPageToDown(NewsPageLocator.LOAD_CIRCLE.getPath(), webDriver);
     }

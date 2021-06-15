@@ -12,6 +12,7 @@ public enum NewsPageLocator implements BaseLocator{
     TABLE_VIEW_BTN(By.cssSelector(".fa.fa-th-large")),
     LIST_VIEW_BTN(By.cssSelector(".fa.fa-bars")),
     DISPLAYED_ARTICLES(By.cssSelector("ul.list>li")),
+    ITEMS_LBL(By.cssSelector(".main-wrapper h2")),
     LOAD_CIRCLE(By.xpath("//app-spinner"));
     private final By path;
 

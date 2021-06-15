@@ -7,7 +7,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 import static com.greencity.locators.NewsPageLocator.DISPLAYED_ARTICLES;
@@ -43,4 +46,28 @@ public class NewsItemsContainer {
     public void scroll() {
         ScrollWrapper.scrollPageToDown(NewsPageLocator.LOAD_CIRCLE.getPath(), this.webDriver);
     }
+
+    public NewsItemsContainer pressEndBtn() throws AWTException {
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_END);
+        robot.delay(2000);
+        robot.keyRelease(KeyEvent.VK_END);
+        robot.keyPress(KeyEvent.VK_END);
+        robot.delay(2000);
+        robot.keyRelease(KeyEvent.VK_END);
+        robot.keyPress(KeyEvent.VK_END);
+        robot.delay(2000);
+        robot.keyRelease(KeyEvent.VK_END);
+        robot.keyPress(KeyEvent.VK_END);
+        robot.delay(2000);
+        robot.keyRelease(KeyEvent.VK_END);
+        robot.keyPress(KeyEvent.VK_END);
+        robot.delay(2000);
+        robot.keyRelease(KeyEvent.VK_END);
+        return new NewsItemsContainer(webDriver);
+
+    }
+
+
+
 }
