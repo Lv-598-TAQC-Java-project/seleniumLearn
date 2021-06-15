@@ -2,7 +2,9 @@ package com.greencity.pages;
 
 import com.greencity.elements.Link;
 import com.greencity.locators.HeaderLocators;
+import com.greencity.utils.WaitWrapper;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 
 public class Header {
@@ -31,16 +33,22 @@ public class Header {
     }
 
     public SignInPage goToSignInPage(){
+        signInBtn = new Link(HeaderLocators.SIGN_IN,this.webDriver);
         signInBtn.click();
+
         return new SignInPage(webDriver);
     }
-
+    public SignInPage goToSignUpPage(){
+        signUpBtn = new Link(HeaderLocators.SIGN_UP,this.webDriver);
+        signUpBtn.click();
+        return new SignInPage(webDriver);
+    }
     ///endregion
 
     protected void initElements() {
         logo = new Link(HeaderLocators.LOGO,this.webDriver);
         ecoNewsLink = new Link(HeaderLocators.ECO_NEWS,this.webDriver);
-        signUpBtn = new Link(HeaderLocators.SIGN_UP,this.webDriver);
-        signInBtn = new Link(HeaderLocators.SIGN_IN,this.webDriver);
+
+
     }
 }

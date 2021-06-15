@@ -4,6 +4,9 @@ import com.greencity.elements.Link;
 import com.greencity.locators.NewsPageLocator;
 import org.openqa.selenium.WebDriver;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
+
 public class EcoNewsPage extends BaseCommon {
     ///region WebElements
     private Link createNewsBtn;
@@ -14,6 +17,8 @@ public class EcoNewsPage extends BaseCommon {
     private Link filterEducationBtn;
     private Link tableviewBtn;
     private Link listViewBtn;
+    private Link itemsLabel;
+    private EcoNewsListComponent ecoNewsListComponent;
     ///endregion
 
     public EcoNewsPage(WebDriver webDriver) {
@@ -42,18 +47,49 @@ public class EcoNewsPage extends BaseCommon {
         filterNewsBtn.click();
         return new EcoNewsPage(webDriver);
     }
-    public void clickOnEventsFilter(){
+    public EcoNewsPage clickOnEventsFilter(){
         filterEventsBtn.click();
-    }
-    public void clickInitiativesFilter(){
-        filterInitiativesBtn.click();
-    }
-    public void clickOnEducationFilter(){
-        filterEducationBtn.click();
-    }
-    public EcoNewsPage clickOnAdsFilter(){
-        filterAdsBtn.click();
         return new EcoNewsPage(webDriver);
+    }
+    public EcoNewsPage clickInitiativesFilter() throws AWTException {
+        filterInitiativesBtn.click();
+
+        return new EcoNewsPage(webDriver);
+    }
+
+    public EcoNewsPage pressEndBtn() throws AWTException {
+        Robot robot = new Robot();
+        robot.delay(2000);
+        robot.keyPress(KeyEvent.VK_END);
+        robot.keyRelease(KeyEvent.VK_END);
+        robot.delay(2000);
+        robot.keyPress(KeyEvent.VK_END);
+        robot.keyRelease(KeyEvent.VK_END);
+        robot.delay(2000);
+        robot.keyPress(KeyEvent.VK_END);
+        robot.keyRelease(KeyEvent.VK_END);
+        robot.delay(2000);
+        robot.keyPress(KeyEvent.VK_END);
+        robot.keyRelease(KeyEvent.VK_END);
+        robot.delay(2000);
+        robot.keyPress(KeyEvent.VK_END);
+        robot.keyRelease(KeyEvent.VK_END);
+        return new EcoNewsPage(webDriver);
+    }
+    public String getItemsLabelText(){
+        itemsLabel = new Link(NewsPageLocator.ITEMS_LABEL,this.webDriver);
+        return itemsLabel.getText();
+    }
+    public EcoNewsPage clickOnEducationFilter() throws AWTException {
+        filterEducationBtn.click();
+
+        return new EcoNewsPage(webDriver);
+    }
+    public EcoNewsPage clickOnAdsFilter() throws AWTException {
+
+        filterAdsBtn.click();
+
+        return  new EcoNewsPage(webDriver);
     }
 
 //    public EcoNewsPage refresh(){
@@ -65,9 +101,12 @@ public class EcoNewsPage extends BaseCommon {
     }
     public EcoNewsPage clickOnListWiewBtn(){
         listViewBtn.click();
+
         return new EcoNewsPage(webDriver);
     }
-
+    public EcoNewsListComponent goToEcoNewsComponent(){
+        return new EcoNewsListComponent(webDriver);
+    }
     @Override
     public Header getHeader() {
         return super.getHeader();

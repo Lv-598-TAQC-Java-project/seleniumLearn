@@ -12,21 +12,18 @@ public class MySpacePage extends BaseCommon {
     public MySpacePage(WebDriver webDriver) {
 
         super(webDriver);
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         initElements();
     }
 
     private void initElements() {
-       // profileName = new Link(MySpaceLocators.PROFILE_NAME, this.webDriver);
+
+      profileName = new Link(MySpaceLocators.PROFILE_NAME, this.webDriver);
         //addNewHabitButton = new Link(MySpaceLocators.ADD_NEW_HABIT_BTN,this.webDriver);
     }
 
     public String getProfileNameText(){
-       return profileName.getText();
+        profileName = new Link(MySpaceLocators.PROFILE_NAME, this.webDriver);
+        return profileName.getText();
     }
 
 }

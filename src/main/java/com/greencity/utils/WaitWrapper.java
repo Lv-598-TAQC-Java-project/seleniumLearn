@@ -2,6 +2,7 @@ package com.greencity.utils;
 
 import com.greencity.elements.Link;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -23,9 +24,9 @@ public class WaitWrapper {
         driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
     }
 
-    public static void setDefaultExplicitlyWait(WebDriver driver, long explicityWait, Link link){
+    public static void setDefaultExplicitlyWait(WebDriver driver, long explicityWait, WebElement webElement){
         setEmptyImplicitlyWait(driver);
-        (new WebDriverWait(driver,explicityWait)).until(ExpectedConditions.visibilityOf(link.webElement));
+        (new WebDriverWait(driver,explicityWait)).until(ExpectedConditions.visibilityOf(webElement));
         setDefaultImplicitlyWait(driver);
     }
 

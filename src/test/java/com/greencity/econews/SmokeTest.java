@@ -3,9 +3,11 @@ package com.greencity.econews;
 import com.greencity.pages.WelcomePage;
 import org.testng.annotations.Test;
 
+import java.awt.*;
+
 public class SmokeTest extends TestRunner {
     @Test
-    public void smokeTest() throws InterruptedException {
+    public void smokeTest() throws InterruptedException, AWTException {
         WelcomePage welcomePage = loadApplication();
         welcomePage.getHeader()
                 .goToSignInPage()
@@ -14,8 +16,7 @@ public class SmokeTest extends TestRunner {
                 .goToEcoNewsPage()
                 .clickOnNewsFilter()
                 .clickOnListWiewBtn()
-                .clickOnAdsFilter();
-//                .clickOnCreateNewsBtn();
+                .clickOnAdsFilter().clickOnCreateNewsBtn()               ;
 
 
     }
