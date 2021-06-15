@@ -11,7 +11,7 @@ public class SuccessfulLoginTest extends TestRunner {
         welcomePage.getHeader()
                 .goToSignInPage()
                 .signIn()
-               .getHeader()
+                .getHeader()
                 .goToEcoNewsPage();
     }
 

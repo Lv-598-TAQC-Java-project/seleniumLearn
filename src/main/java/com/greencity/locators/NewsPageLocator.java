@@ -10,7 +10,12 @@ public enum NewsPageLocator implements BaseLocator{
     FILTER_INITIATIVES_BTN(By.cssSelector(".ul-eco-buttons a:nth-child(4)")),
     FILTER_EDUCATION_BTN(By.cssSelector(".ul-eco-buttons a:nth-child(5)")),
     TABLE_VIEW_BTN(By.cssSelector(".fa.fa-th-large")),
-    LIST_VIEW_BTN(By.cssSelector(".fa.fa-bars"));
+    LIST_VIEW_BTN(By.cssSelector(".fa.fa-bars")),
+
+    CURRENT(By.cssSelector("div.list-wrapper >ul > li:nth-child(1)"))
+
+    ;
+
     private final By path;
 
     NewsPageLocator(By path) {

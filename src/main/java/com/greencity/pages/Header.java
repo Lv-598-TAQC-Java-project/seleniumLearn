@@ -4,6 +4,8 @@ import com.greencity.elements.Link;
 import com.greencity.locators.HeaderLocators;
 import org.openqa.selenium.WebDriver;
 
+import java.util.ArrayList;
+
 
 public class Header {
     ///region webElements
@@ -31,16 +33,26 @@ public class Header {
     }
 
     public SignInPage goToSignInPage(){
-        signInBtn.click();
+        new Link(HeaderLocators.SIGN_IN,this.webDriver).click();
         return new SignInPage(webDriver);
     }
+
+
+
+
+
+
+
+
+
+
 
     ///endregion
 
     protected void initElements() {
         logo = new Link(HeaderLocators.LOGO,this.webDriver);
         ecoNewsLink = new Link(HeaderLocators.ECO_NEWS,this.webDriver);
-        signUpBtn = new Link(HeaderLocators.SIGN_UP,this.webDriver);
-        signInBtn = new Link(HeaderLocators.SIGN_IN,this.webDriver);
+        //signUpBtn = new Link(HeaderLocators.SIGN_UP,this.webDriver);
+       // signInBtn = new Link(HeaderLocators.SIGN_IN,this.webDriver);
     }
 }

@@ -2,6 +2,9 @@ package com.greencity.pages;
 
 import com.greencity.elements.Link;
 import com.greencity.locators.NewsPageLocator;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 public class EcoNewsPage extends BaseCommon {
@@ -14,6 +17,13 @@ public class EcoNewsPage extends BaseCommon {
     private Link filterEducationBtn;
     private Link tableviewBtn;
     private Link listViewBtn;
+
+
+
+
+
+
+
     ///endregion
 
     public EcoNewsPage(WebDriver webDriver) {
@@ -30,6 +40,8 @@ public class EcoNewsPage extends BaseCommon {
         filterEducationBtn = new Link(NewsPageLocator.FILTER_EDUCATION_BTN,this.webDriver);
         tableviewBtn = new Link(NewsPageLocator.TABLE_VIEW_BTN, this.webDriver);
         listViewBtn = new Link(NewsPageLocator.LIST_VIEW_BTN,this.webDriver);
+
+
 
     }
 
@@ -56,6 +68,8 @@ public class EcoNewsPage extends BaseCommon {
         return new EcoNewsPage(webDriver);
     }
 
+
+
 //    public EcoNewsPage refresh(){
 //        webDriver.navigate().refresh();
 //        return new EcoNewsPage(webDriver);
@@ -67,6 +81,17 @@ public class EcoNewsPage extends BaseCommon {
         listViewBtn.click();
         return new EcoNewsPage(webDriver);
     }
+
+
+
+public CurrentEcoNewsPage findNews(){
+
+Link l=new Link(webDriver.findElement(By.cssSelector("#main-content > div > div.list-wrapper > ul > li:nth-child(1)")));
+l.click();
+return new CurrentEcoNewsPage(webDriver);
+
+}
+
 
     @Override
     public Header getHeader() {

@@ -13,10 +13,12 @@ public class TestRunner {
    // private Map<Long, WebDriver> drivers;
 
     protected WebDriver getDriver() {
-        String webDriverPath = System.getenv("webdriver.chrome.driver");
+        String webDriverPath = System.getenv("Chromedriver");
         System.setProperty("webdriver.chrome.driver", webDriverPath);
         WebDriver currentWebDriver = new ChromeDriver();
+        currentWebDriver.manage().window().maximize();
         WaitWrapper.setDefaultImplicitlyWait(currentWebDriver);
+
 //        if (currentWebDriver == null) {
 //            currentWebDriver = new ChromeDriver();
 //            WaitWrapper.setDefaultImplicitlyWait(currentWebDriver);
