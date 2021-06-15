@@ -6,9 +6,8 @@ import org.openqa.selenium.WebElement;
 
 public class ButtonElement extends BaseWebElement {
 
-
-    public ButtonElement(BaseLocator locator, WebDriver webDriver) {
-        super(locator, webDriver);
+    public ButtonElement(BaseLocator locator, WebDriver driver) {
+        super(locator, driver);
     }
 
     public ButtonElement(BaseLocator locator, WebElement webElement) {
@@ -19,7 +18,9 @@ public class ButtonElement extends BaseWebElement {
         super(webElement);
     }
 
+
     public void clickOnButton() {
         webElement.click();
     }
+
 }
