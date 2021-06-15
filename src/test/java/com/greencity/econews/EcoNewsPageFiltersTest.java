@@ -15,9 +15,9 @@ public class EcoNewsPageFiltersTest extends TestRunner{
         WelcomePage welcomePage = loadApplication();
        welcomePage
                 .getHeader()
-                .goToEcoNewsPage()
-                .goToEcoNewsComponent()
-                .findElements();
+                .goToEcoNewsPage();
+
+
 //                .clickOnAdsFilter()
 //                .clickOnNewsFilter()
 //                .clickOnEducationFilter()

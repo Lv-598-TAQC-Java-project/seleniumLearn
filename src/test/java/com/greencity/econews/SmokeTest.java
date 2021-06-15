@@ -17,7 +17,7 @@ public class SmokeTest extends TestRunner {
     }
     @Test
     public void smokeTest() throws  AWTException {
-
+    // працює через раз
         int a = ecoNewsPage
                 .goToNewsItemContainer()
                 .pressEndBtn()
@@ -31,7 +31,7 @@ public class SmokeTest extends TestRunner {
        ecoNewsPage.scroll();
         int actual =ecoNewsPage
                 .goToNewsItemContainer()
-                .getItemComponentsCount();
+                .getItemsSize();
         System.out.println(actual);
         String[] s=ecoNewsPage.getItemsLblText().split(" ");
         int expected = Integer.parseInt(s[0]);
