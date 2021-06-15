@@ -1,15 +1,13 @@
-package com.greencity.test;
+package com.greencity.locators;
 
-import com.greencity.locators.BaseLocator;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
-public enum CurrentNewsLocators implements BaseLocator {
+public enum CurrentResultQueryNewsLocators implements BaseLocator {
     NEWS_TITLE(By.xpath(".//div[contains(@class, 'title')]//a"));
 
     private By path;
 
-    CurrentNewsLocators(By path) {
+    CurrentResultQueryNewsLocators(By path) {
         this.path = path;
     }
 

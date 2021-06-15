@@ -1,13 +1,13 @@
-package com.greencity.pages;
+package com.greencity.pages.SearchQueryPage;
 
 import com.greencity.locators.SortByPopupComponentLocators;
-import com.greencity.test.ListNewsComponent;
+import com.greencity.pages.BaseCommon;
 import org.openqa.selenium.WebDriver;
 
 public class SearchQueryPage extends BaseCommon {
 
     //    SearchQuerySortPopupComponent sort;
-    ListNewsComponent listNewsComponent;
+    ListResultQueryNewsComponent listResultQueryNewsComponent;
 
     public SearchQueryPage(WebDriver webDriver) {
         super(webDriver);
@@ -16,7 +16,7 @@ public class SearchQueryPage extends BaseCommon {
 
     private void initElements() {
 //        sort = new SearchQuerySortPopupComponent(webDriver);
-        listNewsComponent = new ListNewsComponent(webDriver);
+        listResultQueryNewsComponent = new ListResultQueryNewsComponent(webDriver);
     }
 
 //    public SearchQueryPage sortBy(SortByPopupComponentLocators choice) {
@@ -26,12 +26,12 @@ public class SearchQueryPage extends BaseCommon {
 //    }
 
     public SearchQueryPage sortNews(SortByPopupComponentLocators choice) {
-        listNewsComponent.sortBy(choice);
+        listResultQueryNewsComponent.sortBy(choice);
         return new SearchQueryPage(webDriver);
     }
 
     public String getTitleOfCurrentNewsByIndex(int i) {
-        return listNewsComponent.getTitleByIndex(i);
+        return listResultQueryNewsComponent.getTitleByIndex(i);
     }
 
 }

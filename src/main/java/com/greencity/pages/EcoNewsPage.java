@@ -3,6 +3,8 @@ package com.greencity.pages;
 import com.greencity.elements.Label;
 import com.greencity.elements.Link;
 import com.greencity.locators.NewsPageLocator;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import com.greencity.utils.ScrollWrapper;
 import org.openqa.selenium.WebDriver;
 
@@ -17,6 +19,7 @@ public class EcoNewsPage extends BaseCommon {
     private Link tableviewBtn;
     private Link listViewBtn;
     private Label itemsLbl;
+
     ///endregion
 
     public EcoNewsPage(WebDriver webDriver) {
@@ -32,7 +35,8 @@ public class EcoNewsPage extends BaseCommon {
         filterInitiativesBtn = new Link(NewsPageLocator.FILTER_INITIATIVES_BTN, this.webDriver);
         filterEducationBtn = new Link(NewsPageLocator.FILTER_EDUCATION_BTN, this.webDriver);
         tableviewBtn = new Link(NewsPageLocator.TABLE_VIEW_BTN, this.webDriver);
-        listViewBtn = new Link(NewsPageLocator.LIST_VIEW_BTN, this.webDriver);
+        listViewBtn = new Link(NewsPageLocator.LIST_VIEW_BTN,this.webDriver);
+
     }
 
     public CreateNewsPage clickOnCreateNewsBtn() {
@@ -63,10 +67,7 @@ public class EcoNewsPage extends BaseCommon {
         return new EcoNewsPage(webDriver);
     }
 
-    //    public EcoNewsPage refresh(){
-//        webDriver.navigate().refresh();
-//        return new EcoNewsPage(webDriver);
-//    }
+
     public void clickOnTableViewBtn() {
         tableviewBtn.click();
     }
@@ -82,6 +83,16 @@ public class EcoNewsPage extends BaseCommon {
     public void scroll() {
        ScrollWrapper.scrollPageToDown(NewsPageLocator.LOAD_CIRCLE.getPath(), webDriver);
     }
+
+
+
+   public CurrentEcoNewsPage findNews(){
+
+        Link l=new Link(webDriver.findElement(By.cssSelector("#main-content > div > div.list-wrapper > ul > li:nth-child(1)")));
+        l.click();
+        return new CurrentEcoNewsPage(webDriver);
+
+  }
 
 
     public NewsItemsContainer goToNewsItemContainer(){
