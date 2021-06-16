@@ -1,14 +1,22 @@
 package com.greencity.pages;
 
+import com.greencity.elements.ButtonElement;
 import com.greencity.elements.Label;
 import com.greencity.elements.Link;
 import com.greencity.locators.NewsPageLocator;
 import com.greencity.utils.WaitWrapper;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
+
 import com.greencity.utils.ScrollWrapper;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.WebElement;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.greencity.locators.NewsPageLocator.ALL_NEWS;
+
 
 public class EcoNewsPage extends BaseCommon {
     ///region WebElements
@@ -21,6 +29,11 @@ public class EcoNewsPage extends BaseCommon {
     private Link tableviewBtn;
     private Link listViewBtn;
     private Label itemsLbl;
+    private List<CurrentEcoNewsPage> currentNews;
+    private Link linkNotGood;
+
+
+
 
     ///endregion
 
@@ -38,8 +51,21 @@ public class EcoNewsPage extends BaseCommon {
         filterEducationBtn = new Link(NewsPageLocator.FILTER_EDUCATION_BTN, this.webDriver);
         tableviewBtn = new Link(NewsPageLocator.TABLE_VIEW_BTN, this.webDriver);
         listViewBtn = new Link(NewsPageLocator.LIST_VIEW_BTN,this.webDriver);
+        //initPageOfNews();
+
+        linkNotGood=new Link(NewsPageLocator.CURRENT_NEWS,this.webDriver);
+
 
     }
+
+
+    public void initPageOfNews() {
+       currentNews =new ArrayList<CurrentEcoNewsPage>();
+        for (WebElement linkElement : webDriver.findElements(ALL_NEWS.getPath())) {
+            currentNews.add(new CurrentEcoNewsPage(webDriver));
+
+    }}
+
 
     public CreateNewsPage clickOnCreateNewsBtn() {
         createNewsBtn = new Link(NewsPageLocator.CREATE_NEWS_BUTTON, this.webDriver);
@@ -55,22 +81,22 @@ public class EcoNewsPage extends BaseCommon {
 
     public EcoNewsPage clickOnEventsFilter() {
         filterEventsBtn.click();
-        return new EcoNewsPage(webDriver);
+        return this;
     }
 
     public EcoNewsPage clickInitiativesFilter() {
         filterInitiativesBtn.click();
-        return new EcoNewsPage(webDriver);
+        return this;
     }
 
     public EcoNewsPage clickOnEducationFilter() {
         filterEducationBtn.click();
-        return new EcoNewsPage(webDriver);
+        return this;
     }
 
     public EcoNewsPage clickOnAdsFilter() {
         filterAdsBtn.click();
-        return new EcoNewsPage(webDriver);
+        return this;
     }
 
 
@@ -97,10 +123,14 @@ public class EcoNewsPage extends BaseCommon {
 
 
 
+///????????????
+
    public CurrentEcoNewsPage findNews(){
 
-        Link l=new Link(webDriver.findElement(By.cssSelector("#main-content > div > div.list-wrapper > ul > li:nth-child(1)")));
-        l.click();
+
+
+        linkNotGood.click();
+
         return new CurrentEcoNewsPage(webDriver);
 
   }

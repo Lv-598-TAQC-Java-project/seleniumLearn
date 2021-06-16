@@ -14,9 +14,11 @@ public enum NewsPageLocator implements BaseLocator{
     CURRENT(By.cssSelector("div.list-wrapper >ul > li:nth-child(1)")),
     DISPLAYED_ARTICLES(By.cssSelector("ul.list>li")),
     ITEMS_LBL(By.cssSelector(".main-wrapper h2")),
-    LOAD_CIRCLE(By.xpath("//app-spinner"));
+    LOAD_CIRCLE(By.xpath("//app-spinner")),
+    ALL_NEWS(By.cssSelector("#main-content > div > div.list-wrapper > ul > li")),
+    CURRENT_NEWS(By.cssSelector("#main-content > div > div.list-wrapper > ul > li:nth-child(1)"));
     //FILTER_NEWS_BTN_PRESSED(By.cssSelector(".ul-eco-buttons a:nth-child(1) [class='custom-chip global-tag global-tag-clicked']"));
-  
+
     private final By path;
 
     NewsPageLocator(By path) {
