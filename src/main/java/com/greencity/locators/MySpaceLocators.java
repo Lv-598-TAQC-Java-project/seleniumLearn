@@ -15,6 +15,6 @@ public enum MySpaceLocators implements BaseLocator {
 
     @Override
     public By getPath() {
-        return null;
+        return path;
     }
 }

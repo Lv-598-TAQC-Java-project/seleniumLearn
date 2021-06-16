@@ -1,24 +1,42 @@
 package com.greencity.econews;
 
+import com.greencity.pages.EcoNewsPage;
 import com.greencity.pages.WelcomePage;
+import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class SmokeTest extends TestRunner {
-    @Test
-    public void smokeTest() throws InterruptedException {
-        WelcomePage welcomePage = loadApplication();
-        welcomePage.getHeader()
-                .goToSignInPage()
-                .signIn()
-                .getHeader()
-                .goToEcoNewsPage()
-                .clickOnNewsFilter()
-                .clickOnListWiewBtn()
-                .clickOnAdsFilter();
-//                .clickOnCreateNewsBtn();
+import java.awt.*;
 
+public class SmokeTest extends TestRunner {
+    WelcomePage welcomePage;
+    EcoNewsPage ecoNewsPage;
+
+    @Test
+    public void smokeTest() throws  AWTException {
+    // працює через раз
+
+        int a = new WelcomePage(webDriver).getHeader().goToEcoNewsPage()
+                .goToNewsItemContainer()
+                .pressEndBtn()
+                .getItemsSize();
+        System.out.println(a);
 
     }
 
+    @Test
+    public void newTest() throws AWTException {
+       ecoNewsPage.scroll();
+        int actual =ecoNewsPage
+                .goToNewsItemContainer()
+                .getItemsSize();
+        System.out.println(actual);
+        String[] s=ecoNewsPage.getItemsLblText().split(" ");
+        int expected = Integer.parseInt(s[0]);
+        Assert.assertEquals(actual,expected);
 
+    }
 }
+
+
+

@@ -1,12 +1,13 @@
 package com.greencity.pages;
 
+import com.greencity.elements.Label;
 import com.greencity.elements.Link;
 import com.greencity.locators.MySpaceLocators;
 import org.openqa.selenium.WebDriver;
 
 
 public class MySpacePage extends BaseCommon {
-    private Link profileName;
+    private Label profileName;
     private Link addNewHabitButton;
 
     public MySpacePage(WebDriver webDriver) {
@@ -25,7 +26,9 @@ public class MySpacePage extends BaseCommon {
         //addNewHabitButton = new Link(MySpaceLocators.ADD_NEW_HABIT_BTN,this.webDriver);
     }
 
-    public String getProfileNameText(){
+    public String getProfileNameText() throws InterruptedException {
+        Thread.sleep(5000);
+        profileName = new Label(MySpaceLocators.PROFILE_NAME, this.webDriver);
        return profileName.getText();
     }
 
