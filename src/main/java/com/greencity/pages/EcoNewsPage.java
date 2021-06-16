@@ -3,10 +3,12 @@ package com.greencity.pages;
 import com.greencity.elements.Label;
 import com.greencity.elements.Link;
 import com.greencity.locators.NewsPageLocator;
+import com.greencity.utils.WaitWrapper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import com.greencity.utils.ScrollWrapper;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class EcoNewsPage extends BaseCommon {
     ///region WebElements
@@ -47,19 +49,23 @@ public class EcoNewsPage extends BaseCommon {
 
     public EcoNewsPage clickOnNewsFilter() {
         filterNewsBtn.click();
+       // WaitWrapper.setExplicitlyWait(webDriver,2L, ExpectedConditions.visibilityOf(itemsLbl.webElement));
+        return this;
+    }
+
+    public EcoNewsPage clickOnEventsFilter() {
+        filterEventsBtn.click();
         return new EcoNewsPage(webDriver);
     }
 
-    public void clickOnEventsFilter() {
-        filterEventsBtn.click();
-    }
-
-    public void clickInitiativesFilter() {
+    public EcoNewsPage clickInitiativesFilter() {
         filterInitiativesBtn.click();
+        return new EcoNewsPage(webDriver);
     }
 
-    public void clickOnEducationFilter() {
+    public EcoNewsPage clickOnEducationFilter() {
         filterEducationBtn.click();
+        return new EcoNewsPage(webDriver);
     }
 
     public EcoNewsPage clickOnAdsFilter() {
@@ -77,6 +83,11 @@ public class EcoNewsPage extends BaseCommon {
         return new EcoNewsPage(webDriver);
     }
     public String getItemsLblText(){
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         itemsLbl = new Label(NewsPageLocator.ITEMS_LBL,this.webDriver);
         return itemsLbl.getText();
     }

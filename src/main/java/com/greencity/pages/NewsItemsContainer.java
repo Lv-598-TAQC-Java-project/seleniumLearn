@@ -4,6 +4,7 @@ import com.greencity.locators.NewsPageLocator;
 import com.greencity.utils.ScrollWrapper;
 import com.greencity.utils.WaitWrapper;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -47,24 +48,36 @@ public class NewsItemsContainer {
         ScrollWrapper.scrollPageToDown(NewsPageLocator.LOAD_CIRCLE.getPath(), this.webDriver);
     }
 
-    public NewsItemsContainer pressEndBtn() throws AWTException {
-        Robot robot = new Robot();
-        robot.keyPress(KeyEvent.VK_END);
-        robot.delay(2000);
-        robot.keyRelease(KeyEvent.VK_END);
-        robot.keyPress(KeyEvent.VK_END);
-        robot.delay(2000);
-        robot.keyRelease(KeyEvent.VK_END);
-        robot.keyPress(KeyEvent.VK_END);
-        robot.delay(2000);
-        robot.keyRelease(KeyEvent.VK_END);
-        robot.keyPress(KeyEvent.VK_END);
-        robot.delay(2000);
-        robot.keyRelease(KeyEvent.VK_END);
-        robot.keyPress(KeyEvent.VK_END);
-        robot.delay(2000);
-        robot.keyRelease(KeyEvent.VK_END);
-        return new NewsItemsContainer(webDriver);
+    public NewsItemsContainer pressEndBtn()  {
+        boolean flag =true;
+        Robot robot = null;
+        try {
+            robot = new Robot();
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
+        try {
+            do {
+                robot.keyPress(KeyEvent.VK_END);
+                robot.delay(1000);
+                robot.keyRelease(KeyEvent.VK_END);
+                WebElement webElement = webDriver.findElement(NewsPageLocator.LOAD_CIRCLE.getPath());
+                if(webElement == null){
+                    robot.keyPress(KeyEvent.VK_END);
+                    robot.delay(2000);
+                    robot.keyRelease(KeyEvent.VK_END);
+                    flag =false;
+                    break;
+                }
+            }
+            while (flag);
+        }catch (NoSuchElementException noE){
+            robot.keyPress(KeyEvent.VK_END);
+            robot.delay(2000);
+            robot.keyRelease(KeyEvent.VK_END);
+        }
+
+        return this;
 
     }
 
