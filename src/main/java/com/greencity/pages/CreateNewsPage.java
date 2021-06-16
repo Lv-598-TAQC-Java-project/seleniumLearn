@@ -1,8 +1,9 @@
 package com.greencity.pages;
 
+import com.greencity.elements.ButtonElement;
+import com.greencity.elements.InputElement;
 import com.greencity.elements.Link;
 import com.greencity.locators.CreateNewsLocator;
-import com.greencity.locators.Tag;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -13,11 +14,18 @@ import static com.greencity.locators.CreateNewsLocator.TAG_LIST;
 
 public class CreateNewsPage extends BaseCommon {
 
-    private Link title;
+    private InputElement title;
     private List<Link> tags;
-    private Link source;
-    private Link content;
-    private Link publishButton;
+    private ButtonElement tagNews;
+    private ButtonElement tagAds;
+    private ButtonElement tagEvents;
+    private ButtonElement tagInitiatives;
+    private ButtonElement tagEducation;
+    private InputElement source;
+    private InputElement content;
+    private ButtonElement publishButton;
+
+
 
     public CreateNewsPage(WebDriver webDriver) {
         super(webDriver);
@@ -26,11 +34,16 @@ public class CreateNewsPage extends BaseCommon {
 
     public void initElements() {
 
-        title = new Link(CreateNewsLocator.TITLE_FIELD, this.webDriver);
+        title = new InputElement(CreateNewsLocator.TITLE_FIELD, this.webDriver);
         initTagsButtons();
-        source = new Link(CreateNewsLocator.SOURCE_FIELD, this.webDriver);
-        content = new Link(CreateNewsLocator.CONTENT_FIELD, this.webDriver);
-        publishButton = new Link(CreateNewsLocator.PUBLISH_BUTTON, this.webDriver);
+        tagNews = new ButtonElement(CreateNewsLocator.TAG_NEWS_BUTTON, this.webDriver);
+        tagAds = new ButtonElement(CreateNewsLocator.TAG_ADS_BUTTON, this.webDriver);
+        tagEvents = new ButtonElement(CreateNewsLocator.TAG_EVENTS_BUTTON, this.webDriver);
+        tagInitiatives = new ButtonElement(CreateNewsLocator.TAG_INITIATIVES_BUTTON, this.webDriver);
+        tagEducation = new ButtonElement(CreateNewsLocator.TAG_EDUCATION_BUTTON, this.webDriver);
+        source = new InputElement(CreateNewsLocator.SOURCE_FIELD, this.webDriver);
+        content = new InputElement(CreateNewsLocator.CONTENT_FIELD, this.webDriver);
+        publishButton = new ButtonElement(CreateNewsLocator.PUBLISH_BUTTON, this.webDriver);
     }
 
     public void initTagsButtons() {
@@ -46,17 +59,15 @@ public class CreateNewsPage extends BaseCommon {
     }
 
     public CreateNewsPage addTwoTags() {
-        List<Tag> tags = new ArrayList<>();
-        tags.add(Tag.NEWS);
-        tags.add(Tag.EVENTS);
+        tagNews.clickOnButton();
+        tagEvents.clickOnButton();
         return this;
     }
 
     public CreateNewsPage addThreeTags(){
-        List<Tag> tags = new ArrayList<>();
-        tags.add(Tag.ADS);
-        tags.add(Tag.INITIATIVES);
-        tags.add(Tag.EDUCATION);
+        tagAds.clickOnButton();
+        tagInitiatives.clickOnButton();
+        tagEducation.clickOnButton();
         return this;
     }
 
@@ -71,8 +82,8 @@ public class CreateNewsPage extends BaseCommon {
     }
 
     public CreateNewsPage clickOnPublishButton() {
-        publishButton.click();
-        return new CreateNewsPage(webDriver); //but I need EcoNewsPage (?)
+        publishButton.clickOnButton();
+        return new CreateNewsPage(webDriver);
     }
 
 
