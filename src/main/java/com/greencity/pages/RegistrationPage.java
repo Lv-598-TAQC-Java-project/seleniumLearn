@@ -112,21 +112,4 @@ public class RegistrationPage extends BasePage {
     }
 
 
-
-
-
-    public void assertShortPasswordRegistration(){
-        String expectedResult = "Password must be at least 8 characters long";
-        passwordError = new Link(RegistrationFormLocator.PASSWORD_ERROR,this.webDriver);
-        Assert.assertEquals(expectedResult,passwordError.getText());
-    }
-    public void assertNegativePasswordRegistration(){
-        String expectedResult = "Password has contain at least one character of Uppercase letter (A-Z), Lowercase letter (a-z), Digit (0-9), Special character (~`!@#$%^&*()+=_-{}[]|:;”’?/<>,.)";
-        passwordError = new Link(RegistrationFormLocator.PASSWORD_ERROR,this.webDriver);
-        Assert.assertEquals(expectedResult,passwordError.getText());
-    }
-
-
-
-
 }
