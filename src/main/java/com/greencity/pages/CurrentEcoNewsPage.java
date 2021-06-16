@@ -31,6 +31,11 @@ public class CurrentEcoNewsPage extends BaseCommon {
 
     public CurrentEcoNewsPage(WebDriver webDriver) {
         super(webDriver);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         initElements();
 
     }
@@ -58,24 +63,26 @@ public class CurrentEcoNewsPage extends BaseCommon {
         }
     }
   public void goToComment(){
+
       Actions actions=new Actions(webDriver);
-      actions.keyDown(Keys.CONTROL).sendKeys(Keys.END).perform();
-       // return new CommentComponentsPage();
+      //actions.keyDown(Keys.CONTROL).sendKeys(Keys.END).perform();
+      actions.moveToElement(comentComponent.getTextCommentArea().webElement).perform();
+      try {
+          Thread.sleep(1000);
+      } catch (InterruptedException e) {
+          e.printStackTrace();
+      }
+
+
+  }
+  public void writesComment(String str){
+
+        comentComponent.typeComment(str);
 
   }
 
 
-//        public void chooseTags(){
-//           tagsList=new ArrayList<>();
-//            for(WebElement linkElement: webDriver.findElements(TAGS_LIST.getPath())){
-//                tagsList.add(new Link(linkElement));
-//                linkElement.click();}}
 
-
-    @Override
-    public Header getHeader() {
-        return super.getHeader();
-    }
 
 
 }

@@ -25,7 +25,9 @@ public class DeletePopUpCommentPage extends BasePopUp{
 
      }
 
-
+public void setYesDelete(){
+yesDelete.clickOnButton();
+}
 
      //getText
 
