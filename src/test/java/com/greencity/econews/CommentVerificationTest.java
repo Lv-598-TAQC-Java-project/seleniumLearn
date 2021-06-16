@@ -6,7 +6,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class CommentVerificationTest extends TestRunner {
-    CurrentEcoNewsPage  currentPage;
+    CurrentEcoNewsPage currentPage;
+
     @BeforeMethod
     public void loadInitPage() throws InterruptedException {
 

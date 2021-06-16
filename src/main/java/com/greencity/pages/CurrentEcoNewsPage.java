@@ -32,6 +32,7 @@ public class CurrentEcoNewsPage extends BaseCommon {
     public CurrentEcoNewsPage(WebDriver webDriver) {
         super(webDriver);
         initElements();
+
     }
 
 

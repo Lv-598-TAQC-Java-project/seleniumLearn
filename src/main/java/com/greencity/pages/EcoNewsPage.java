@@ -3,10 +3,12 @@ package com.greencity.pages;
 import com.greencity.elements.Label;
 import com.greencity.elements.Link;
 import com.greencity.locators.NewsPageLocator;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import com.greencity.utils.ScrollWrapper;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class EcoNewsPage extends BaseCommon {
     ///region WebElements
@@ -19,12 +21,21 @@ public class EcoNewsPage extends BaseCommon {
     private Link tableviewBtn;
     private Link listViewBtn;
     private Label itemsLbl;
+    private List<CurrentEcoNewsPage> list;
+
 
     ///endregion
-
     public EcoNewsPage(WebDriver webDriver) {
         super(webDriver);
         initElements();
+    }
+
+    public void initPageOfNews() {
+//        currentNews = new ArrayList<CurrentEcoNewsPage>();
+//        for (WebElement linkElement : webDriver.findElements(ALL_NEWS.getPath())) {
+//            currentNews.add(new CurrentEcoNewsPage(webDriver));
+//
+//        }
     }
 
     public void initElements() {
@@ -35,7 +46,7 @@ public class EcoNewsPage extends BaseCommon {
         filterInitiativesBtn = new Link(NewsPageLocator.FILTER_INITIATIVES_BTN, this.webDriver);
         filterEducationBtn = new Link(NewsPageLocator.FILTER_EDUCATION_BTN, this.webDriver);
         tableviewBtn = new Link(NewsPageLocator.TABLE_VIEW_BTN, this.webDriver);
-        listViewBtn = new Link(NewsPageLocator.LIST_VIEW_BTN,this.webDriver);
+        listViewBtn = new Link(NewsPageLocator.LIST_VIEW_BTN, this.webDriver);
 
     }
 
@@ -76,26 +87,34 @@ public class EcoNewsPage extends BaseCommon {
         listViewBtn.click();
         return new EcoNewsPage(webDriver);
     }
-    public String getItemsLblText(){
-        itemsLbl = new Label(NewsPageLocator.ITEMS_LBL,this.webDriver);
+
+    public String getItemsLblText() {
+        itemsLbl = new Label(NewsPageLocator.ITEMS_LBL, this.webDriver);
         return itemsLbl.getText();
     }
+
     public void scroll() {
-       ScrollWrapper.scrollPageToDown(NewsPageLocator.LOAD_CIRCLE.getPath(), webDriver);
+        ScrollWrapper.scrollPageToDown(NewsPageLocator.LOAD_CIRCLE.getPath(), webDriver);
     }
+///
 
+    public CurrentEcoNewsPage findNews() {
 
-
-   public CurrentEcoNewsPage findNews(){
-
-        Link l=new Link(webDriver.findElement(By.cssSelector("#main-content > div > div.list-wrapper > ul > li:nth-child(1)")));
-        l.click();
+//        Link l = new Link(webDriver.findElement(By.cssSelector("#main-content > div > div.list-wrapper > ul > li:nth-child(1)")));
+//        l.click();
         return new CurrentEcoNewsPage(webDriver);
 
-  }
+    }
 
+//    public void initCommentItemPages() {
+//        list = new ArrayList<CurrentEcoNewsPage>();
+//        for (WebElement linkElement : webDriver.findElements(ALL_BUTTON.getPath())) {
+//            list.add(new CurrentEcoNewsPage(webDriver));
+//
+//        }
 
-    public NewsItemsContainer goToNewsItemContainer(){
+    public NewsItemsContainer goToNewsItemContainer() {
         return new NewsItemsContainer(webDriver);
     }
 }
+

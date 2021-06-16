@@ -2,7 +2,7 @@ package com.greencity.locators;
 
 import org.openqa.selenium.By;
 
-public enum NewsPageLocator implements BaseLocator{
+public enum NewsPageLocator implements BaseLocator {
     CREATE_NEWS_BUTTON(By.xpath("//span[text()='Create news'")),
     FILTER_NEWS_BTN(By.cssSelector(".ul-eco-buttons a:nth-child(1)")),
     FILTER_ADS_BTN(By.cssSelector(".ul-eco-buttons a:nth-child(2)")),
@@ -14,8 +14,9 @@ public enum NewsPageLocator implements BaseLocator{
     CURRENT(By.cssSelector("div.list-wrapper >ul > li:nth-child(1)")),
     DISPLAYED_ARTICLES(By.cssSelector("ul.list>li")),
     ITEMS_LBL(By.cssSelector(".main-wrapper h2")),
-    LOAD_CIRCLE(By.xpath("//app-spinner"));
-  
+    LOAD_CIRCLE(By.xpath("//app-spinner")),
+    ALL_NEWS(By.cssSelector("#main-content > div > div.list-wrapper > ul > li"));
+
     private final By path;
 
     NewsPageLocator(By path) {
