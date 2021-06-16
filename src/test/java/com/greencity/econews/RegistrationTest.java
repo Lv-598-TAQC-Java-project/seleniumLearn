@@ -19,7 +19,7 @@ public class RegistrationTest extends TestRunner {
         RegisterModel registerModel = RegisterModelRepository.getRegisterModel();
 
 
-        WelcomePage welcomePage = loadApplication();
+        WelcomePage welcomePage = new WelcomePage(webDriver);
         String temp = welcomePage.getHeader()
                 .clickOnSignUp()
                 .clickOnEmailField()
@@ -42,7 +42,7 @@ public class RegistrationTest extends TestRunner {
     {
         RegisterModel registerModel = RegisterModelRepository.getRegisterModel();
 
-        WelcomePage welcomePage = loadApplication();
+        WelcomePage welcomePage = new WelcomePage(webDriver);
         welcomePage.getHeader()
                 .clickOnSignUp()
                 .clickOnEmailField()
@@ -60,7 +60,7 @@ public class RegistrationTest extends TestRunner {
     {
         RegisterModel registerModel = RegisterModelRepository.getRegisterModel();
 
-        WelcomePage welcomePage = loadApplication();
+        WelcomePage welcomePage = new WelcomePage(webDriver);
         welcomePage.getHeader()
                 .clickOnSignUp()
                 .clickOnPasswordField()
@@ -75,7 +75,7 @@ public class RegistrationTest extends TestRunner {
     {
         RegisterModel registerModel = RegisterModelRepository.getRegisterModel();
 
-        WelcomePage welcomePage = loadApplication();
+        WelcomePage welcomePage = new WelcomePage(webDriver);
         welcomePage.getHeader()
                 .clickOnSignUp()
                 .clickOnPasswordField()

@@ -30,11 +30,4 @@ public class TestRunner {
         webDriver.get(BASE_URL);
     }
 
-    protected WelcomePage loadApplication() {
-        // return new HomePage(driver);
-        WebDriver driver = getDriver();
-        driver.get(BASE_URL);
-        return new WelcomePage(driver);
-
-    }
 }

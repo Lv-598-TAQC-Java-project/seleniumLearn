@@ -5,9 +5,6 @@ import com.greencity.elements.Link;
 import com.greencity.locators.HeaderLocators;
 import org.openqa.selenium.WebDriver;
 
-import java.util.ArrayList;
-
-
 
 public class Header extends BasePage  {
     ///region webElements
@@ -20,6 +17,7 @@ public class Header extends BasePage  {
     protected WebDriver webDriver;
 
     public Header(WebDriver webDriver) {
+        super(webDriver);
         this.webDriver = webDriver;
         try {
             Thread.sleep(4000);
