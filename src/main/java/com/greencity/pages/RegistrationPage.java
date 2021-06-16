@@ -1,5 +1,6 @@
 package com.greencity.pages;
 
+import com.greencity.elements.ButtonElement;
 import com.greencity.elements.InputElement;
 import com.greencity.elements.Link;
 import com.greencity.locators.NewsPageLocator;
@@ -13,11 +14,11 @@ import org.testng.Assert;
 public class RegistrationPage extends BasePage {
 
     ///region WebElements
-    private Link emailField;
-    private Link userNameField;
-    private Link passwordField;
-    private Link confirmPasswordField;
-    private Link signUpBtn;
+    private InputElement emailField;
+    private InputElement userNameField;
+    private InputElement passwordField;
+    private InputElement confirmPasswordField;
+    private ButtonElement signUpBtn;
     private Link userIsRegistered;
     private Link negativeEmail;
     private Link passwordError;
@@ -33,18 +34,18 @@ public class RegistrationPage extends BasePage {
 
     public void initElements() {
 
-        emailField = new Link(RegistrationFormLocator.EMAIL, this.webDriver);
-        userNameField = new Link(RegistrationFormLocator.USER_NAME, this.webDriver);
-        passwordField = new Link(RegistrationFormLocator.PASSWORD_FOR_REGISTRATION, this.webDriver);
-        confirmPasswordField = new Link(RegistrationFormLocator.PASSWORD_FOR_CONFIRMATION, this.webDriver);
-        signUpBtn = new Link(RegistrationFormLocator.SIGN_UP, this.webDriver);
+        emailField = new InputElement(RegistrationFormLocator.EMAIL, this.webDriver);
+        userNameField = new InputElement(RegistrationFormLocator.USER_NAME, this.webDriver);
+        passwordField = new InputElement(RegistrationFormLocator.PASSWORD_FOR_REGISTRATION, this.webDriver);
+        confirmPasswordField = new InputElement(RegistrationFormLocator.PASSWORD_FOR_CONFIRMATION, this.webDriver);
+        signUpBtn = new ButtonElement(RegistrationFormLocator.SIGN_UP, this.webDriver);
 
 
 
     }
 
     public RegistrationPage clickOnSubmitButton(){
-        signUpBtn.click();
+        signUpBtn.clickOnButton();
         return this;
     }
 

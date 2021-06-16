@@ -19,7 +19,7 @@ public class TestRunner {
     @BeforeMethod
     protected void getDriver() {
         String webDriverPath = System.getenv("webdriver.chrome.driver");
-        System.setProperty("webdriver.chrome.driver", "C:/Users/nadia/Desktop/chromedriver/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", webDriverPath);
         webDriver = new ChromeDriver();
         WebDriverWait wait = new WebDriverWait(webDriver,20);
         WaitWrapper.setDefaultImplicitlyWait(webDriver);

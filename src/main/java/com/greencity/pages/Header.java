@@ -14,7 +14,6 @@ public class Header extends BasePage  {
     private Link signUpBtn;
     private Link signInBtn;
     ///endregion
-    protected WebDriver webDriver;
 
     public Header(WebDriver webDriver) {
         super(webDriver);
