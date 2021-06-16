@@ -10,11 +10,13 @@ import java.lang.ref.WeakReference;
 
 public class TestRunner {
     private final String BASE_URL = "https://ita-social-projects.github.io/GreenCityClient/#/";
-   // private Map<Long, WebDriver> drivers;
+
+    // private Map<Long, WebDriver> drivers;
+
 
     protected WebDriver getDriver() {
             String webDriverPath = System.getenv("webdriver.chrome.driver");
-        System.setProperty("webdriver.chrome.driver", webDriverPath);
+        System.setProperty("webdriver.chrome.driver", "C:/Users/nadia/Desktop/chromedriver/chromedriver.exe");
         WebDriver currentWebDriver = new ChromeDriver();
         WaitWrapper.setDefaultImplicitlyWait(currentWebDriver);
 //        if (currentWebDriver == null) {

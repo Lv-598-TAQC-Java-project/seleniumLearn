@@ -30,6 +30,9 @@ public class RegistrationPage extends BasePage {
     }
 
 
+    public Link getUserIsRegistered() {
+        return userIsRegistered;
+    }
 
     public void initElements() {
 
@@ -45,6 +48,8 @@ public class RegistrationPage extends BasePage {
 
     public RegistrationPage clickOnSignUp(){
         signUpBtn.click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//simple-snack-bar[@class = 'mat-simple-snackbar ng-star-inserted']")));
+        userIsRegistered = new Link(RegistrationFormLocator.USER_REGISTERED,this.webDriver);
         return this;
     }
 

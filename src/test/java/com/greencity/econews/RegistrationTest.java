@@ -4,18 +4,23 @@ import com.greencity.data.RegisterModel;
 import com.greencity.data.RegisterModelRepository;
 import com.greencity.pages.WelcomePage;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.Test;
+
 
 public class RegistrationTest extends TestRunner {
 
+
     WebDriver driver;
+
     @Test
     public void registrationANewUserTest()
     {
         RegisterModel registerModel = RegisterModelRepository.getRegisterModel();
 
+
         WelcomePage welcomePage = loadApplication();
-        welcomePage.getHeader()
+        String temp = welcomePage.getHeader()
                 .clickOnSignUp()
                 .clickOnEmailField()
                 .enterEmail(registerModel.getEmail())
@@ -23,8 +28,12 @@ public class RegistrationTest extends TestRunner {
                 .enterUserName(registerModel.getUserName())
                 .clickOnPasswordField()
                 .enterPassword(registerModel.getPassword())
-                .clickOnSignUp()
-                .assertIsUserRegistered();
+                .clickOnSignUp().getUserIsRegistered().getText();
+
+
+        String expectedResult = "You have successfully registered on the site. Please confirm your email address in the email box.\n" +
+             "X";
+        Assert.assertEquals(temp, expectedResult);
     }
 
 
