@@ -1,5 +1,6 @@
-package com.greencity.locators;
+package com.greencity.locators.SearchQueryPageLocators;
 
+import com.greencity.locators.BaseLocator;
 import org.openqa.selenium.By;
 
 public enum SearchQueryPageLocators implements BaseLocator {
