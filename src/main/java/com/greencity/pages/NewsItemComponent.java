@@ -12,4 +12,5 @@ public class NewsItemComponent {
         this.newsItem = newsItem;
 
     }
+
 }
