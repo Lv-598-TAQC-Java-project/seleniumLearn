@@ -10,7 +10,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class SearchingElementsTest extends TestRunner {
+public class  SearchingElementsTest extends TestRunner {
 
     WelcomePage welcomePage;
     @BeforeMethod
