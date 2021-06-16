@@ -42,7 +42,7 @@ public class EcoNewsPage extends BaseCommon {
     public CreateNewsPage clickOnCreateNewsBtn() {
         createNewsBtn = new Link(NewsPageLocator.CREATE_NEWS_BUTTON, this.webDriver);
         createNewsBtn.click();
-        return new CreateNewsPage();
+        return new CreateNewsPage(webDriver);
     }
 
     public EcoNewsPage clickOnNewsFilter() {

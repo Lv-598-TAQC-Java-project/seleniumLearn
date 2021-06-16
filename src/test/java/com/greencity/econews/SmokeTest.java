@@ -11,12 +11,14 @@ import java.awt.*;
 public class SmokeTest extends TestRunner {
     WelcomePage welcomePage;
     EcoNewsPage ecoNewsPage;
-
+    @BeforeClass
+    public void start() {
+         ecoNewsPage = loadApplication().getHeader().goToEcoNewsPage();
+    }
     @Test
     public void smokeTest() throws  AWTException {
     // працює через раз
-
-        int a = new WelcomePage(webDriver).getHeader().goToEcoNewsPage()
+        int a = ecoNewsPage
                 .goToNewsItemContainer()
                 .pressEndBtn()
                 .getItemsSize();
