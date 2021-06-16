@@ -3,7 +3,6 @@ package com.greencity.econews;
 import com.greencity.data.RegisterModel;
 import com.greencity.data.RegisterModelRepository;
 import com.greencity.pages.WelcomePage;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -11,7 +10,6 @@ import org.testng.annotations.Test;
 public class RegistrationTest extends TestRunner {
 
 
-    WebDriver driver;
 
     @Test
     public void registrationANewUserTest()
@@ -20,7 +18,7 @@ public class RegistrationTest extends TestRunner {
 
 
         WelcomePage welcomePage = new WelcomePage(webDriver);
-        String temp = welcomePage.getHeader()
+        String actualResult = welcomePage.getHeader()
                 .clickOnSignUp()
                 .clickOnEmailField()
                 .enterEmail(registerModel.getEmail())
@@ -28,12 +26,10 @@ public class RegistrationTest extends TestRunner {
                 .enterUserName(registerModel.getUserName())
                 .clickOnPasswordField()
                 .enterPassword(registerModel.getPassword())
-                .clickOnSignUp().getUserIsRegistered().getText();
-
-
+                .clickOnSubmitButton().getDataUserIsRegistered();
         String expectedResult = "You have successfully registered on the site. Please confirm your email address in the email box.\n" +
              "X";
-        Assert.assertEquals(temp, expectedResult);
+        Assert.assertEquals(actualResult, expectedResult);
     }
 
 
@@ -43,7 +39,7 @@ public class RegistrationTest extends TestRunner {
         RegisterModel registerModel = RegisterModelRepository.getRegisterModel();
 
         WelcomePage welcomePage = new WelcomePage(webDriver);
-        welcomePage.getHeader()
+        String actualResult = welcomePage.getHeader()
                 .clickOnSignUp()
                 .clickOnEmailField()
                 .enterEmail(registerModel.getNegativeEmail())
@@ -51,8 +47,10 @@ public class RegistrationTest extends TestRunner {
                 .enterUserName(registerModel.getUserName())
                 .clickOnPasswordField()
                 .enterPassword(registerModel.getPassword())
-                .clickOnSignUp()
-                .assertNegativeEmail();
+                .clickOnSubmitButton().getDataForAssertNegativeEmail();
+        String expectedResult = "Please check that your e-mail address is indicated correctly";
+        Assert.assertEquals(expectedResult,actualResult);
+
 
     }
     @Test
@@ -61,12 +59,14 @@ public class RegistrationTest extends TestRunner {
         RegisterModel registerModel = RegisterModelRepository.getRegisterModel();
 
         WelcomePage welcomePage = new WelcomePage(webDriver);
-        welcomePage.getHeader()
+        String actualResult = welcomePage.getHeader()
                 .clickOnSignUp()
                 .clickOnPasswordField()
                 .enterPassword(registerModel.getShortPassword())
-                .clickOnSignUp()
-                .assertShortPasswordRegistration();
+                .clickOnSubmitButton()
+                .getDataForAssertPasswordError();
+        String expectedResult = "Password must be at least 8 characters long";
+        Assert.assertEquals(expectedResult,actualResult);
 
 
     }
@@ -76,13 +76,14 @@ public class RegistrationTest extends TestRunner {
         RegisterModel registerModel = RegisterModelRepository.getRegisterModel();
 
         WelcomePage welcomePage = new WelcomePage(webDriver);
-        welcomePage.getHeader()
+        String actualResult = welcomePage.getHeader()
                 .clickOnSignUp()
                 .clickOnPasswordField()
                 .enterPassword(registerModel.getNegativePassword())
-                .clickOnSignUp()
-                .assertNegativePasswordRegistration();
-
+                .clickOnSubmitButton()
+                .getDataForAssertPasswordError();
+        String expectedResult = "Password has contain at least one character of Uppercase letter (A-Z), Lowercase letter (a-z), Digit (0-9), Special character (~`!@#$%^&*()+=_-{}[]|:;”’?/<>,.)";
+        Assert.assertEquals(expectedResult,actualResult);
 
     }
 

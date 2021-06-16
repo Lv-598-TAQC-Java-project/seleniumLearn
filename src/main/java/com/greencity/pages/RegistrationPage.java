@@ -30,9 +30,6 @@ public class RegistrationPage extends BasePage {
     }
 
 
-    public Link getUserIsRegistered() {
-        return userIsRegistered;
-    }
 
     public void initElements() {
 
@@ -46,12 +43,11 @@ public class RegistrationPage extends BasePage {
 
     }
 
-    public RegistrationPage clickOnSignUp(){
+    public RegistrationPage clickOnSubmitButton(){
         signUpBtn.click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//simple-snack-bar[@class = 'mat-simple-snackbar ng-star-inserted']")));
-        userIsRegistered = new Link(RegistrationFormLocator.USER_REGISTERED,this.webDriver);
         return this;
     }
+
 
 
     public RegistrationPage clickOnEmailField (){
@@ -98,20 +94,26 @@ public class RegistrationPage extends BasePage {
     }
 
 
-    public void assertIsUserRegistered(){
-        String expectedResult = "You have successfully registered on the site. Please confirm your email address in the email box.\n" +
-                "X";
+    public String getDataForAssertPasswordError(){
+        passwordError = new Link(RegistrationFormLocator.PASSWORD_ERROR,this.webDriver);
+        String actualResult;
+        return actualResult = passwordError.getText();
+    }
+    public String getDataForAssertNegativeEmail(){
+        negativeEmail = new Link(RegistrationFormLocator.EMAIL_ERROR,this.webDriver);
+        String actualResult;
+        return actualResult = negativeEmail.getText();
+    }
+    public String getDataUserIsRegistered(){
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//simple-snack-bar[@class = 'mat-simple-snackbar ng-star-inserted']")));
         userIsRegistered = new Link(RegistrationFormLocator.USER_REGISTERED,this.webDriver);
-        Assert.assertEquals(userIsRegistered.getText(), expectedResult);
+        String actualtResult;
+        return actualtResult = userIsRegistered.getText();
     }
 
-    public void assertNegativeEmail(){
-        String expectedResult = "Please check that your e-mail address is indicated correctly";
-        negativeEmail = new Link(RegistrationFormLocator.EMAIL_ERROR,this.webDriver);
-        Assert.assertEquals(expectedResult,negativeEmail.getText());
 
-    }
+
+
 
     public void assertShortPasswordRegistration(){
         String expectedResult = "Password must be at least 8 characters long";
