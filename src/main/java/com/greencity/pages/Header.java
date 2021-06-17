@@ -3,9 +3,8 @@ package com.greencity.pages;
 import com.greencity.elements.ButtonElement;
 import com.greencity.elements.Link;
 import com.greencity.locators.HeaderLocators;
+import com.greencity.pages.SearchPopup.SearchPopup;
 import org.openqa.selenium.WebDriver;
-
-import java.util.ArrayList;
 
 
 public class Header {

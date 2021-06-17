@@ -23,8 +23,8 @@ public class DropdownElement extends BaseWebElement {
         webElement.click();
     }
 
-    public void clickOnMenuElement(By variant) {
-        webElement.findElement(variant);
-        webElement.click();
+    public void clickOnMenuElement(BaseLocator locator) {
+        ButtonElement button = new ButtonElement(locator,webElement);
+        button.clickOnButton();
     }
 }
