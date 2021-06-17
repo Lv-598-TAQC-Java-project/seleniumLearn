@@ -38,7 +38,6 @@ public class EcoNewsPage extends BaseCommon {
     public EcoNewsPage(WebDriver webDriver) {
         super(webDriver);
         initElements();
-
     }
 
     public void initElements() {

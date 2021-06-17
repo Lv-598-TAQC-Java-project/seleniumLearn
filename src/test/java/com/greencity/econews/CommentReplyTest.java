@@ -1,19 +1,22 @@
 package com.greencity.econews;
 
-import com.greencity.pages.CommentComponentsPage;
+import com.greencity.locators.CommentItemComponentLocator;
+import com.greencity.pages.CommentItemComponentPage;
 import com.greencity.pages.CurrentEcoNewsPage;
+import com.greencity.pages.ReplyComponent;
 import com.greencity.pages.WelcomePage;
-import org.testng.annotations.BeforeMethod;
+import com.sun.org.glassfish.gmbal.Description;
+import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class CommentVerificationTest extends TestRunner {
-
-    CommentComponentsPage commentComponent;
+public class CommentReplyTest extends TestRunner {
+    private final String replyText = "Test reply";
     CurrentEcoNewsPage currentPage;
+    ReplyComponent replyComponent;
 
-    @BeforeMethod
-    public void loadInitPage() {
-
+    @Test
+    public void creatingCommentAndReplyToNews() {
         try {
             currentPage = new WelcomePage(webDriver)
                     .getHeader()
@@ -21,31 +24,13 @@ public class CommentVerificationTest extends TestRunner {
                     .signIn()
                     .getHeader()
                     .goToEcoNewsPage().findNews();
-            //.clickOnNewsFilter().findNews();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
         currentPage.goToComment();
-
-
+        replyComponent
+                .getReplyComment()
+                .click();
     }
-
-    @Test
-    public void writeCommentTest() {
-        currentPage.writesComment("qqqq");
-    }
-
-
-//    @Test
-//    public void deleteTest(){
-//
-//        commentComponent.deleleteComment();
-//
-//    }
-
-
 }
-
-
-

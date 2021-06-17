@@ -18,6 +18,6 @@ private By path;
 
     @Override
     public By getPath() {
-        return null;
+        return path;
     }
 }

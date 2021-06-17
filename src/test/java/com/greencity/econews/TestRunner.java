@@ -14,7 +14,7 @@ public class TestRunner {
     private final String BASE_URL = "https://ita-social-projects.github.io/GreenCityClient/#";
     protected static WebDriver webDriver;
 
-    @BeforeMethod
+    @BeforeClass
     protected void getDriver() {
         String webDriverPath = System.getenv("webdriver.chrome.driver");
         System.setProperty("webdriver.chrome.driver", webDriverPath);
@@ -26,10 +26,11 @@ public class TestRunner {
     }
 
 
-    @AfterMethod
+    @AfterClass
     protected void tearDownClass(){
         webDriver.close();
         webDriver.quit();
     }
 
 }
+
