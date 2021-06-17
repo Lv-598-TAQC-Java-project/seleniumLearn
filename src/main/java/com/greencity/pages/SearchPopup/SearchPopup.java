@@ -1,16 +1,17 @@
-package com.greencity.pages;
+package com.greencity.pages.SearchPopup;
 
 import com.greencity.elements.InputElement;
-import com.greencity.elements.LabelElement;
 import com.greencity.elements.Link;
-import com.greencity.locators.SearchPopUpLocators;
+import com.greencity.locators.SearchPopupLocators.SearchPopUpLocators;
+import com.greencity.pages.BasePopUp;
 import com.greencity.pages.SearchQueryPage.SearchQueryPage;
 import org.openqa.selenium.WebDriver;
 
 public class SearchPopup extends BasePopUp {
     InputElement searchInput;
     Link allQueryResults;
-    LabelElement nuSuchNewsText;
+    ListOfAlternativeNewsComponent listOfAlternativeNewsComponent;
+
 
     public SearchPopup(WebDriver webDriver) {
         super(webDriver);
@@ -19,6 +20,10 @@ public class SearchPopup extends BasePopUp {
 
     private void initElements() {
         searchInput = new InputElement(SearchPopUpLocators.SEARCH_FIELD, webDriver);
+    }
+
+    public void initElementsForNegativeSearch() {
+        listOfAlternativeNewsComponent = new ListOfAlternativeNewsComponent(webDriver);
     }
 
     public void searchComponents(String query) {
@@ -33,11 +38,17 @@ public class SearchPopup extends BasePopUp {
         return new SearchQueryPage(webDriver);
     }
 
-    public void initElementsForNegativeSearch() {
-        nuSuchNewsText = new LabelElement(SearchPopUpLocators.SEARCH_NOT_FOUND_TEXT, webDriver);
+    public String getSearchNotFoundText() {
+        return listOfAlternativeNewsComponent.getSearchNotFoundText();
     }
 
-    public String getSearchNotFoundText() {
-        return nuSuchNewsText.getText();
+    public String getAlternativeSearchText() {
+        return listOfAlternativeNewsComponent.getSearchAlternativeText();
     }
+
+    public int getAlternativeNewsQuantity() {
+        return listOfAlternativeNewsComponent.getAlternativeNewsQuantity();
+    }
+
+
 }

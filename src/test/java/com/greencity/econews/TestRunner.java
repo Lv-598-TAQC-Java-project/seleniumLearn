@@ -12,9 +12,7 @@ import java.lang.ref.WeakReference;
 
 public class TestRunner {
     private final String BASE_URL = "https://ita-social-projects.github.io/GreenCityClient/#";
-   // private Map<Long, WebDriver> drivers;
     protected static WebDriver webDriver;
-
 
     @BeforeMethod
     protected void getDriver() {

@@ -3,10 +3,13 @@ package com.greencity.pages;
 import com.greencity.elements.ButtonElement;
 import com.greencity.elements.Link;
 import com.greencity.locators.HeaderLocators;
+import com.greencity.pages.SearchPopup.SearchPopup;
 import org.openqa.selenium.WebDriver;
 
 
+
 public class Header extends BasePage  {
+
     ///region webElements
     private Link logo;
     private Link ecoNewsLink;//or WebElement
