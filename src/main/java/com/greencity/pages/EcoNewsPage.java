@@ -4,20 +4,26 @@ import com.greencity.elements.ButtonElement;
 import com.greencity.elements.Label;
 import com.greencity.elements.Link;
 import com.greencity.locators.NewsPageLocator;
-import org.openqa.selenium.By;
 
 import com.greencity.utils.ScrollWrapper;
+import com.greencity.utils.WaitWrapper;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import static com.greencity.locators.NewsPageLocator.ALL_NEWS;
+import static com.greencity.locators.NewsPageLocator.DISPLAYED_FILTERS;
 
 
 public class EcoNewsPage extends BaseCommon {
     ///region WebElements
+    private List<FilterTagsComponent> filterTagsList;
+    private By filters = DISPLAYED_FILTERS.getPath();
     private ButtonElement createNewsBtn;
     private Link filterNewsBtn;
     private Link filterAdsBtn;
@@ -29,6 +35,7 @@ public class EcoNewsPage extends BaseCommon {
     private Label itemsLbl;
     private List<CurrentEcoNewsPage> currentNews;
     private Link linkNotGood;
+    private ButtonElement filterNewsBtnPressed;
 
 
 
@@ -38,6 +45,7 @@ public class EcoNewsPage extends BaseCommon {
     public EcoNewsPage(WebDriver webDriver) {
         super(webDriver);
         initElements();
+
     }
 
     public void initElements() {
@@ -73,24 +81,33 @@ public class EcoNewsPage extends BaseCommon {
 
     public EcoNewsPage clickOnNewsFilter() {
         filterNewsBtn.click();
-        return new EcoNewsPage(webDriver);
+       // WaitWrapper.setExplicitlyWait(webDriver,2L, ExpectedConditions.visibilityOf(itemsLbl.webElement));
+        return this;
     }
-
-    public void clickOnEventsFilter() {
+    public EcoNewsPage clickOnNewsFilterPressed() {
+        filterNewsBtnPressed = new ButtonElement(NewsPageLocator.FILTER_NEWS_BTN_PRESSED,webDriver);
+        filterNewsBtnPressed.clickOnButton();
+        // WaitWrapper.setExplicitlyWait(webDriver,2L, ExpectedConditions.visibilityOf(itemsLbl.webElement));
+        return this;
+    }
+    public EcoNewsPage clickOnEventsFilter() {
         filterEventsBtn.click();
+        return this;
     }
 
-    public void clickInitiativesFilter() {
+    public EcoNewsPage clickInitiativesFilter() {
         filterInitiativesBtn.click();
+        return this;
     }
 
-    public void clickOnEducationFilter() {
+    public EcoNewsPage clickOnEducationFilter() {
         filterEducationBtn.click();
+        return this;
     }
 
     public EcoNewsPage clickOnAdsFilter() {
         filterAdsBtn.click();
-        return new EcoNewsPage(webDriver);
+        return this;
     }
 
 
@@ -103,6 +120,11 @@ public class EcoNewsPage extends BaseCommon {
         return new EcoNewsPage(webDriver);
     }
     public String getItemsLblText(){
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         itemsLbl = new Label(NewsPageLocator.ITEMS_LBL,this.webDriver);
         return itemsLbl.getText();
     }
@@ -110,9 +132,27 @@ public class EcoNewsPage extends BaseCommon {
        ScrollWrapper.scrollPageToDown(NewsPageLocator.LOAD_CIRCLE.getPath(), webDriver);
     }
 
-
-
-///????????????
+    private List<FilterTagsComponent> getFilterTagsList(){
+        filterTagsList = new ArrayList<>();
+        for (WebElement current : getFilterItems()) {
+            filterTagsList.add(new FilterTagsComponent(webDriver,current) );
+        }
+        return filterTagsList;
+    }
+    private List<WebElement> getFilterItems(){
+        return new WaitWrapper(webDriver).setExplicitlyWait(webDriver,1,
+                ExpectedConditions.presenceOfAllElementsLocatedBy(filters));
+    }
+    public EcoNewsPage uncheckFilters(){
+        Iterator<WebElement> iterator = getFilterItems().iterator();
+        while(iterator.hasNext()){
+            WebElement next = iterator.next();
+            if (next.isSelected()){
+                next.click();
+            }
+        }
+        return this;
+    }
 
    public CurrentEcoNewsPage findNews(){
 
@@ -124,7 +164,9 @@ public class EcoNewsPage extends BaseCommon {
 
   }
 
-
+    public WelcomePage goToWelcomePage(){
+        return new WelcomePage(webDriver);
+    }
     public NewsItemsContainer goToNewsItemContainer(){
         return new NewsItemsContainer(webDriver);
     }

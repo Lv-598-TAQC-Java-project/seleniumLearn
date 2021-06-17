@@ -14,7 +14,7 @@ public class CommentVerificationTest extends TestRunner {
     @BeforeMethod
     public void loadInitPage() {
 
-        try {
+
             currentPage = new WelcomePage(webDriver)
                     .getHeader()
                     .goToSignInPage()
@@ -22,9 +22,6 @@ public class CommentVerificationTest extends TestRunner {
                     .getHeader()
                     .goToEcoNewsPage().findNews();
             //.clickOnNewsFilter().findNews();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
         currentPage.goToComment();
 

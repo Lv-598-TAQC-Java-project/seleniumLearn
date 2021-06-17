@@ -17,16 +17,14 @@ public class CommentReplyTest extends TestRunner {
 
     @Test
     public void creatingCommentAndReplyToNews() {
-        try {
+
             currentPage = new WelcomePage(webDriver)
                     .getHeader()
                     .goToSignInPage()
                     .signIn()
                     .getHeader()
                     .goToEcoNewsPage().findNews();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
 
         currentPage.goToComment();
         replyComponent

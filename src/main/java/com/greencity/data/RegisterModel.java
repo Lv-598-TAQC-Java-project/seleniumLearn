@@ -1,5 +1,6 @@
 package com.greencity.data;
 
+
 import lombok.Getter;
 
 @Getter

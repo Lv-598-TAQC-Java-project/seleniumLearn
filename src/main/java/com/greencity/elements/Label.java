@@ -17,4 +17,5 @@ public class Label extends BaseWebElement{
         super(webElement);
     }
     public String getText(){return this.webElement.getText();}
+
 }

@@ -31,6 +31,7 @@ public class Header extends BasePage  {
 
     ///region goToPages
     public EcoNewsPage goToEcoNewsPage() {
+        //зробити перевірку на присутність на цій сторінці
         ecoNewsLink.click();
         return new EcoNewsPage(webDriver);
     }
