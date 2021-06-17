@@ -1,15 +1,15 @@
 package com.greencity.pages;
 
+import com.greencity.elements.Label;
 import com.greencity.locators.NewsPageLocator;
 import com.greencity.utils.ScrollWrapper;
 import com.greencity.utils.WaitWrapper;
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class NewsItemsContainer {
     public NewsItemsContainer(WebDriver driver) {
         this.webDriver = driver;
     }
-
+    private Label itemsLbl;
     private List<NewsItemComponent> getItemComponents() {
         itemComponents = new ArrayList<>();
         for (WebElement current : getItems()) {
@@ -35,7 +35,7 @@ public class NewsItemsContainer {
     private List<WebElement> getItems() {
         WaitWrapper waitWrapper = new WaitWrapper(webDriver);
 
-        return waitWrapper.setExplicitlyWait(webDriver,5,
+        return waitWrapper.setExplicitlyWait(webDriver,3,
                 ExpectedConditions.presenceOfAllElementsLocatedBy(items));
     }
     public int getItemsSize() {
@@ -49,38 +49,31 @@ public class NewsItemsContainer {
     }
 
     public NewsItemsContainer pressEndBtn()  {
-        boolean flag =true;
-        Robot robot = null;
-        try {
-            robot = new Robot();
-        } catch (AWTException e) {
-            e.printStackTrace();
-        }
-        try {
-            do {
-                robot.keyPress(KeyEvent.VK_END);
-                robot.delay(1000);
-                robot.keyRelease(KeyEvent.VK_END);
-                WebElement webElement = webDriver.findElement(NewsPageLocator.LOAD_CIRCLE.getPath());
-                if(webElement == null){
-                    robot.keyPress(KeyEvent.VK_END);
-                    robot.delay(2000);
-                    robot.keyRelease(KeyEvent.VK_END);
-                    flag =false;
-                    break;
-                }
-            }
-            while (flag);
-        }catch (NoSuchElementException noE){
-            robot.keyPress(KeyEvent.VK_END);
-            robot.delay(2000);
-            robot.keyRelease(KeyEvent.VK_END);
-        }
 
+        WebElement webElement = webDriver.findElement(NewsPageLocator.LOAD_CIRCLE.getPath());
+        try {
+        while(webElement!=null) {
+            Actions actions = new Actions(webDriver);
+            actions.keyDown(Keys.CONTROL).sendKeys(Keys.END).perform();
+            webElement = webDriver.findElement(NewsPageLocator.LOAD_CIRCLE.getPath());
+        }
+        } catch (NoSuchElementException e) {
+            System.err.println("Все гаразд, так має бути.");
+        }
         return this;
 
     }
 
-
-
+    public String getItemsLblText(){
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        itemsLbl = new Label(NewsPageLocator.ITEMS_LBL,this.webDriver);
+        return itemsLbl.getText();
+    }
+    public EcoNewsPage goToEcoNewsPage(){
+        return new EcoNewsPage(webDriver);
+    }
 }

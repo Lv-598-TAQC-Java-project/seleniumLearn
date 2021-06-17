@@ -31,6 +31,7 @@ public class EcoNewsPage extends BaseCommon {
     private Label itemsLbl;
     private List<CurrentEcoNewsPage> currentNews;
     private Link linkNotGood;
+    private ButtonElement filterNewsBtnPressed;
 
 
 
@@ -78,7 +79,12 @@ public class EcoNewsPage extends BaseCommon {
        // WaitWrapper.setExplicitlyWait(webDriver,2L, ExpectedConditions.visibilityOf(itemsLbl.webElement));
         return this;
     }
-
+    public EcoNewsPage clickOnNewsFilterPressed() {
+        filterNewsBtnPressed = new ButtonElement(NewsPageLocator.FILTER_NEWS_BTN_PRESSED,webDriver);
+        filterNewsBtnPressed.clickOnButton();
+        // WaitWrapper.setExplicitlyWait(webDriver,2L, ExpectedConditions.visibilityOf(itemsLbl.webElement));
+        return this;
+    }
     public EcoNewsPage clickOnEventsFilter() {
         filterEventsBtn.click();
         return this;
@@ -110,7 +116,7 @@ public class EcoNewsPage extends BaseCommon {
     }
     public String getItemsLblText(){
         try {
-            Thread.sleep(5000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -135,7 +141,9 @@ public class EcoNewsPage extends BaseCommon {
 
   }
 
-
+    public WelcomePage goToWelcomePage(){
+        return new WelcomePage(webDriver);
+    }
     public NewsItemsContainer goToNewsItemContainer(){
         return new NewsItemsContainer(webDriver);
     }

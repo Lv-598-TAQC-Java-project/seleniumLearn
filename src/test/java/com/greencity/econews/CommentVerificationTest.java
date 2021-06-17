@@ -13,17 +13,13 @@ public class CommentVerificationTest extends TestRunner {
     @BeforeMethod
     public void loadInitPage() {
 
-        try {
-            currentPage = new WelcomePage(webDriver)
-                           .getHeader()
-                           .goToSignInPage()
-                           .signIn()
-                           .getHeader()
-                           .goToEcoNewsPage().findNews();
-                           //.clickOnNewsFilter().findNews();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        currentPage = new WelcomePage(webDriver)
+                       .getHeader()
+                       .goToSignInPage()
+                       .signIn()
+                       .getHeader()
+                       .goToEcoNewsPage().findNews();
+        //.clickOnNewsFilter().findNews();
 
         currentPage.goToComment();
 

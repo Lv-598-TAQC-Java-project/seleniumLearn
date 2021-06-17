@@ -15,8 +15,8 @@ public class TestRunner {
     protected static WebDriver webDriver;
     @AfterClass
     public void tearDownClass(){
-//        webDriver.close();
-//        webDriver.quit();
+        webDriver.close();
+        webDriver.quit();
     }
 
     @BeforeClass
@@ -28,6 +28,4 @@ public class TestRunner {
         webDriver.manage().window().maximize();
         webDriver.get(BASE_URL);
     }
-
-
 }
