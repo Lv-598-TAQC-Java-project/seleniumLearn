@@ -21,4 +21,7 @@ public class TextAreaElement extends BaseWebElement{
     public void click(){
         this.webElement.click();
     }
+    public void clear() {
+        webElement.clear();
+    }
 }

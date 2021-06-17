@@ -1,7 +1,7 @@
 package com.greencity.pages.SearchQueryPage;
 
 import com.greencity.elements.Link;
-import com.greencity.locators.CurrentResultQueryNewsLocators;
+import com.greencity.locators.SearchQueryPageLocators.CurrentResultQueryNewsLocators;
 import com.greencity.pages.BaseCommon;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

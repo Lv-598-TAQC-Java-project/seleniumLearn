@@ -14,7 +14,9 @@ public enum NewsPageLocator implements BaseLocator {
     CURRENT(By.cssSelector("div.list-wrapper >ul > li:nth-child(1)")),
     DISPLAYED_ARTICLES(By.cssSelector("ul.list>li")),
     ITEMS_LBL(By.cssSelector(".main-wrapper h2")),
-    LOAD_CIRCLE(By.xpath("//app-spinner"));
+    LOAD_CIRCLE(By.xpath("//app-spinner")),
+    ALL_NEWS(By.cssSelector("#main-content > div > div.list-wrapper > ul > li")),
+    CURRENT_NEWS(By.cssSelector("#main-content > div > div.list-wrapper > ul > li:nth-child(1)"));//????????
 
     private final By path;
 
