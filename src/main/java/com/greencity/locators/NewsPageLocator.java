@@ -14,6 +14,7 @@ public enum NewsPageLocator implements BaseLocator {
     LIST_VIEW_BTN(By.cssSelector(".fa.fa-bars")),
     CURRENT(By.cssSelector("div.list-wrapper >ul > li:nth-child(1)")),
     DISPLAYED_ARTICLES(By.cssSelector("ul.list>li")),
+    DISPLAYED_FILTERS(By.cssSelector(".ul-eco-buttons a")),
     ITEMS_LBL(By.cssSelector(".main-wrapper h2")),
     LOAD_CIRCLE(By.xpath("//app-spinner")),
     ALL_NEWS(By.cssSelector("#main-content > div > div.list-wrapper > ul > li")),

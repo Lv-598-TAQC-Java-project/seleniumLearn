@@ -1,5 +1,6 @@
 package com.greencity.pages;
 
+import com.greencity.elements.InputElement;
 import com.greencity.elements.Link;
 import com.greencity.locators.NewsPageLocator;
 import com.greencity.locators.SignInLocators;
@@ -7,9 +8,9 @@ import org.openqa.selenium.WebDriver;
 
 public class SignInPage extends BasePopUp{
 
-    private Link email;
-    private Link password;
-    private Link sighInBtn;
+    private InputElement email;
+    private InputElement password;
+    private InputElement sighInBtn;
     private Link closeBtn;
 
     public SignInPage(WebDriver webDriver) {
@@ -18,9 +19,9 @@ public class SignInPage extends BasePopUp{
     }
 
     private void initElements() {
-        email = new Link(SignInLocators.EMAIL,this.webDriver);
-        password = new Link(SignInLocators.PASSWORD,this.webDriver);
-        sighInBtn = new Link(SignInLocators.SIGN_IN_BTN,this.webDriver);
+        email = new InputElement(SignInLocators.EMAIL,this.webDriver);
+        password = new InputElement(SignInLocators.PASSWORD,this.webDriver);
+        sighInBtn = new InputElement(SignInLocators.SIGN_IN_BTN,this.webDriver);
 
     }
     public MySpacePage signIn(){

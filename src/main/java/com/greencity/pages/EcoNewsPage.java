@@ -4,23 +4,27 @@ import com.greencity.elements.ButtonElement;
 import com.greencity.elements.Label;
 import com.greencity.elements.Link;
 import com.greencity.locators.NewsPageLocator;
-import com.greencity.utils.WaitWrapper;
-import org.openqa.selenium.By;
 
 import com.greencity.utils.ScrollWrapper;
+import com.greencity.utils.WaitWrapper;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import static com.greencity.locators.NewsPageLocator.ALL_NEWS;
+import static com.greencity.locators.NewsPageLocator.DISPLAYED_FILTERS;
 
 
 public class EcoNewsPage extends BaseCommon {
     ///region WebElements
     private Link createNewsBtn;
+    private List<FilterTagsComponent> filterTagsList;
+    private By filters = DISPLAYED_FILTERS.getPath();
     private Link filterNewsBtn;
     private Link filterAdsBtn;
     private Link filterEventsBtn;
@@ -127,9 +131,27 @@ public class EcoNewsPage extends BaseCommon {
        ScrollWrapper.scrollPageToDown(NewsPageLocator.LOAD_CIRCLE.getPath(), webDriver);
     }
 
-
-
-///????????????
+    private List<FilterTagsComponent> getFilterTagsList(){
+        filterTagsList = new ArrayList<>();
+        for (WebElement current : getFilterItems()) {
+            filterTagsList.add(new FilterTagsComponent(webDriver,current) );
+        }
+        return filterTagsList;
+    }
+    private List<WebElement> getFilterItems(){
+        return new WaitWrapper(webDriver).setExplicitlyWait(webDriver,1,
+                ExpectedConditions.presenceOfAllElementsLocatedBy(filters));
+    }
+    public EcoNewsPage uncheckFilters(){
+        Iterator<WebElement> iterator = getFilterItems().iterator();
+        while(iterator.hasNext()){
+            WebElement next = iterator.next();
+            if (next.isSelected()){
+                next.click();
+            }
+        }
+        return this;
+    }
 
    public CurrentEcoNewsPage findNews(){
 
