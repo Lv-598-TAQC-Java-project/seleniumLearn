@@ -22,9 +22,9 @@ import static com.greencity.locators.NewsPageLocator.DISPLAYED_FILTERS;
 
 public class EcoNewsPage extends BaseCommon {
     ///region WebElements
-    private Link createNewsBtn;
     private List<FilterTagsComponent> filterTagsList;
     private By filters = DISPLAYED_FILTERS.getPath();
+    private ButtonElement createNewsBtn;
     private Link filterNewsBtn;
     private Link filterAdsBtn;
     private Link filterEventsBtn;
@@ -45,6 +45,7 @@ public class EcoNewsPage extends BaseCommon {
     public EcoNewsPage(WebDriver webDriver) {
         super(webDriver);
         initElements();
+
     }
 
     public void initElements() {
@@ -73,9 +74,9 @@ public class EcoNewsPage extends BaseCommon {
 
 
     public CreateNewsPage clickOnCreateNewsBtn() {
-        createNewsBtn = new Link(NewsPageLocator.CREATE_NEWS_BUTTON, this.webDriver);
-        createNewsBtn.click();
-        return new CreateNewsPage();
+        createNewsBtn = new ButtonElement(NewsPageLocator.CREATE_NEWS_BUTTON, this.webDriver);
+        createNewsBtn.clickOnButton();
+        return new CreateNewsPage(webDriver);
     }
 
     public EcoNewsPage clickOnNewsFilter() {

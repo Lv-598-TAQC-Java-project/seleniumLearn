@@ -37,6 +37,7 @@ public class CurrentEcoNewsPage extends BaseCommon {
             e.printStackTrace();
         }
         initElements();
+
     }
 
 
