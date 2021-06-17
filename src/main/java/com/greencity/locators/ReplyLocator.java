@@ -18,6 +18,6 @@ public enum ReplyLocator implements BaseLocator {
 
     @Override
     public By getPath() {
-        return null;
+        return path;
     }
 }
