@@ -15,7 +15,7 @@ import static com.greencity.locators.CreateNewsLocator.TAG_LIST;
 public class CreateNewsPage extends BaseCommon {
 
     private InputElement title;
-    private List<Link> tags;
+    //private List<Link> tags;
     private ButtonElement tagNews;
     private ButtonElement tagAds;
     private ButtonElement tagEvents;
@@ -35,7 +35,7 @@ public class CreateNewsPage extends BaseCommon {
     public void initElements() {
 
         title = new InputElement(CreateNewsLocator.TITLE_FIELD, this.webDriver);
-        initTagsButtons();
+        //initTagsButtons();
         tagNews = new ButtonElement(CreateNewsLocator.TAG_NEWS_BUTTON, this.webDriver);
         tagAds = new ButtonElement(CreateNewsLocator.TAG_ADS_BUTTON, this.webDriver);
         tagEvents = new ButtonElement(CreateNewsLocator.TAG_EVENTS_BUTTON, this.webDriver);
@@ -46,28 +46,32 @@ public class CreateNewsPage extends BaseCommon {
         publishButton = new ButtonElement(CreateNewsLocator.PUBLISH_BUTTON, this.webDriver);
     }
 
-    public void initTagsButtons() {
-        tags = new ArrayList<>();
-        for (WebElement linkElement : webDriver.findElements(TAG_LIST.getPath())) {
-            tags.add(new Link(linkElement));
-        }
-    }
+//    public void initTagsButtons() {
+//        tags = new ArrayList<>();
+//        for (WebElement linkElement : webDriver.findElements(TAG_LIST.getPath())) {
+//            tags.add(new Link(linkElement));
+//        }
+//    }
 
-    public CreateNewsPage addTitle() {
+    public CreateNewsPage addTitle() throws InterruptedException {
         title.sendKeys("THE CLIMATE MARCH FOREST");
+        Thread.sleep(1000);
         return this;
     }
 
-    public CreateNewsPage addTwoTags() {
+
+    public CreateNewsPage addTwoTags() throws InterruptedException {
         tagNews.clickOnButton();
-        tagEvents.clickOnButton();
+        tagAds.clickOnButton();
+        Thread.sleep(1000);
         return this;
     }
 
-    public CreateNewsPage addThreeTags(){
-        tagAds.clickOnButton();
+    public CreateNewsPage addThreeTags() throws InterruptedException {
+        tagEvents.clickOnButton();
         tagInitiatives.clickOnButton();
         tagEducation.clickOnButton();
+        Thread.sleep(1000);
         return this;
     }
 

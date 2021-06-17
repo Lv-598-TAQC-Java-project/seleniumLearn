@@ -20,8 +20,9 @@ public class CreateNewsTest extends TestRunner {
     }
 
     @Test
-    public void createNewsTestOne() {
-        CreateNewsPage createNewsPage = new CreateNewsPage(webDriver)
+    public void createNewsTestOne() throws InterruptedException {
+        CreateNewsPage createNewsPage = new CreateNewsPage(webDriver);
+        createNewsPage
                 .addTitle()
                 .addTwoTags()
                 .addSource()
@@ -30,7 +31,7 @@ public class CreateNewsTest extends TestRunner {
     }
 
     @Test
-    public void createNewsTestTwo(){
+    public void createNewsTestTwo() throws InterruptedException {
         CreateNewsPage createNewsPage = new CreateNewsPage(webDriver);
         createNewsPage
                 .addTitle()

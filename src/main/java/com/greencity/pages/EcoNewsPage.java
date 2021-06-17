@@ -1,5 +1,6 @@
 package com.greencity.pages;
 
+import com.greencity.elements.ButtonElement;
 import com.greencity.elements.Label;
 import com.greencity.elements.Link;
 import com.greencity.locators.NewsPageLocator;
@@ -10,7 +11,7 @@ import org.openqa.selenium.WebDriver;
 
 public class EcoNewsPage extends BaseCommon {
     ///region WebElements
-    private Link createNewsBtn;
+    private ButtonElement createNewsBtn;
     private Link filterNewsBtn;
     private Link filterAdsBtn;
     private Link filterEventsBtn;
@@ -40,8 +41,8 @@ public class EcoNewsPage extends BaseCommon {
     }
 
     public CreateNewsPage clickOnCreateNewsBtn() {
-        createNewsBtn = new Link(NewsPageLocator.CREATE_NEWS_BUTTON, this.webDriver);
-        createNewsBtn.click();
+        createNewsBtn = new ButtonElement(NewsPageLocator.CREATE_NEWS_BUTTON, this.webDriver);
+        createNewsBtn.clickOnButton();
         return new CreateNewsPage(webDriver);
     }
 
