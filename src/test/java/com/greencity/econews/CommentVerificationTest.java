@@ -9,18 +9,19 @@ import org.testng.annotations.Test;
 public class CommentVerificationTest extends TestRunner {
 
     CommentComponentsPage commentComponent;
-    CurrentEcoNewsPage  currentPage;
+    CurrentEcoNewsPage currentPage;
+
     @BeforeMethod
     public void loadInitPage() {
 
         try {
             currentPage = new WelcomePage(webDriver)
-                           .getHeader()
-                           .goToSignInPage()
-                           .signIn()
-                           .getHeader()
-                           .goToEcoNewsPage().findNews();
-                           //.clickOnNewsFilter().findNews();
+                    .getHeader()
+                    .goToSignInPage()
+                    .signIn()
+                    .getHeader()
+                    .goToEcoNewsPage().findNews();
+            //.clickOnNewsFilter().findNews();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -32,7 +33,7 @@ public class CommentVerificationTest extends TestRunner {
 
     @Test
     public void writeCommentTest() {
-currentPage.writesComment("qqqq");
+        currentPage.writesComment("qqqq");
     }
 
 
@@ -42,9 +43,6 @@ currentPage.writesComment("qqqq");
 //        commentComponent.deleleteComment();
 //
 //    }
-
-
-
 
 
 }
