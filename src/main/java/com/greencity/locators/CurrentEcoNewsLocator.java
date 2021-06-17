@@ -12,12 +12,6 @@ public enum CurrentEcoNewsLocator implements BaseLocator {
     DESCRIPTION_NEWS(By.cssSelector(".news-text")),
     LINK_SOURCE(By.cssSelector("div.source-field.ng-star-inserted > a"));
 
-
-
-
-
-
-
     private final By path;
 
     CurrentEcoNewsLocator(By path) {
