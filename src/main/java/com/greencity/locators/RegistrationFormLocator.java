@@ -2,20 +2,26 @@ package com.greencity.locators;
 
 import org.openqa.selenium.By;
 
-public enum RegistrationFormLocator {
-    FIRST_NAME(By.id("input-firstname")),
-    LAST_NAME(By.id("input-lastname")),
-    EMAIL(By.id("input-email")),
-    TELEPHONE(By.id("input-telephone")),
-    PASSWORD_FOR_REGISTRATION(By.id("input-password")),
-    PASSWORD_FOR_CONFIRMATION(By.id("input-confirm")),
-    CHECKBOX(By.xpath("//input[@type='checkbox']")),
+public enum RegistrationFormLocator implements BaseLocator {
+    USER_NAME(By.xpath("//input[@id='firstName']")),
+    EMAIL(By.xpath("//input[@id='email']")),
+    PASSWORD_FOR_REGISTRATION(By.xpath("//input[@id='password']")),
+    PASSWORD_FOR_CONFIRMATION(By.xpath("//input[@id='repeatPassword']")),
+    SIGN_UP(By.xpath("//button[@type='submit']")),
+    USER_REGISTERED(By.xpath("//simple-snack-bar[@class = 'mat-simple-snackbar ng-star-inserted']")),
+    EMAIL_ERROR(By.xpath("//div[@class='error-message error-message-show ng-star-inserted']")),
+    PASSWORD_ERROR(By.xpath("//div[@id='password-err-msg']"));
 
-    SUBMIT(By.xpath("//input[@type='submit']"));
 
-    private By path;
+
+    private final By path;
 
     RegistrationFormLocator(By path) {
         this.path=path;
+    }
+
+    @Override
+    public By getPath() {
+        return path;
     }
 }
